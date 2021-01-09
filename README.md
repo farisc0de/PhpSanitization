@@ -1,6 +1,8 @@
 # PhpSanitization
 Simple PHP Sanitization Class
 
+Support String, Arrays, and Associative Arrays
+
 ## Usage
 
 ```php
