@@ -30,8 +30,8 @@ class Sanitization
     /**
      * Like Codeigniter sanatize a key:value pair array, array and string
      *
-     * @param array $data
-     * @return array
+     * @param mixed $data
+     * @return mixed
      */
     public function esc($data = null)
     {
