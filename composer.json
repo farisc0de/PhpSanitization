@@ -1,22 +1,36 @@
 {
-    "name": "phpsanitization/phpsanitization",
-    "type": "library",
-    "description": "Simple PHP Sanitization Class",
-    "keywords": ["sanitization", "filter", "filtering"],
-    "homepage": "https://github.com/fariscode511/phpsanitization",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Faris AL-Otaibi",
-            "email": "farisksa79@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "PhpSanitization\\PhpSanitization\\": "src/"
-        }
+  "name": "phpsanitization/phpsanitization",
+  "type": "library",
+  "description": "Simple PHP Sanitization Class",
+  "keywords": [
+    "sanitization",
+    "filter",
+    "filtering",
+    "php",
+    "php7",
+    "php-library",
+    "sanitizer",
+    "xss-filter",
+    "sanitize",
+    "php-sanitizer",
+    "php-sanitizer-array",
+    "php-sanitize",
+    "php-sanitization"
+  ],
+  "homepage": "https://github.com/fariscode511/phpsanitization",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Faris AL-Otaibi",
+      "email": "farisksa79@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpSanitization\\PhpSanitization\\": "src/"
+    }
+  }
 }

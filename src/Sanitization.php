@@ -22,7 +22,7 @@ class Sanitization
     private $data;
 
     /**
-     * PhpSanitization Class Constructor 
+     * PhpSanitization Class Constructor
      *
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
@@ -46,7 +46,11 @@ class Sanitization
         $data = htmlspecialchars($data, ENT_QUOTES, "UTF-8");
         $data = filter_var($data, FILTER_SANITIZE_STRING);
         $data = strip_tags($data);
-        $data = str_replace(array("\\", "\0", "\n", "\r", "\x1a", "'", '"'), array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'), $data);
+        $data = str_replace(
+            array("\\", "\0", "\n", "\r", "\x1a", "'", '"'),
+            array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'),
+            $data
+        );
         return $data;
     }
     /**
@@ -95,7 +99,6 @@ class Sanitization
      *  The array you want to check it's type
      * @return boolean
      *  Return true if provided array is an associative or false otherwise
-     * 
      */
     private function isAssoc(array $arr)
     {
