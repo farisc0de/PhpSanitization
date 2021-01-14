@@ -49,4 +49,4 @@ This project is distributed under the MIT license
 
 ## Copyright
 
-Copytighy (c) FarisCode - 2021
+Copyright (c) FarisCode - 2021
