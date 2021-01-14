@@ -1,15 +1,37 @@
 <?php
 
+namespace PhpSanitization;
+
+/**
+ * Simple PHP Sanitization Class
+ *
+ * @package PhpSanitization
+ * @version 1.0
+ * @author fariscode <farisksa79@gmail.com>
+ * @license MIT
+ * @link https://github.com/fariscode511/phpsanitization
+ */
 class Sanitization
 {
 
+    /**
+     * The value of the malicious string you want to sanitize
+     *
+     * @var mixed
+     */
     private $data;
 
+    /**
+     * PhpSanitization Class Constructor 
+     *
+     * @param mixed $data
+     *  The value of the malicious string you want to sanitize
+     */
     public function __construct($data = null)
     {
         $this->data = $data;
     }
-    
+
     /**
      * Sanitize value
      *
@@ -28,10 +50,12 @@ class Sanitization
         return $data;
     }
     /**
-     * Like Codeigniter sanatize a key:value pair array, array and string
+     * Like Codeigniter sanatize an associative array, a sequential array or a string
      *
      * @param mixed $data
+     *  The value of the malicious string you want to sanitize
      * @return mixed
+     *  Return a sanitized string, array, or associative array
      */
     public function esc($data = null)
     {
@@ -64,6 +88,15 @@ class Sanitization
         }
     }
 
+    /**
+     * Check if the provided array is an associative or a sequential array
+     *
+     * @param array $arr
+     *  The array you want to check it's type
+     * @return boolean
+     *  Return true if provided array is an associative or false otherwise
+     * 
+     */
     private function isAssoc(array $arr)
     {
         return array_keys($arr) !== range(0, count($arr) - 1);

@@ -1,0 +1,22 @@
+{
+    "name": "fariscode/phpsanitization",
+    "type": "library",
+    "description": "Simple PHP Sanitization Class",
+    "keywords": ["sanitization", "filter", "filtering"],
+    "homepage": "https://github.com/fariscode511/phpsanitization",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Faris AL-Otaibi",
+            "email": "farisksa79@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "PhpSanitization": "src"
+        }
+    }
+}
