@@ -6,7 +6,7 @@ Support String, Arrays, and Associative Arrays
 ## How to install
 
 ```
-composer require fariscode/phpsanitization
+composer require phpsanitization/phpsanitization
 ```
 
 ## Usage
