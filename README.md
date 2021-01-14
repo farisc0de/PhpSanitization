@@ -1,4 +1,8 @@
 # PhpSanitization
+
+![](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/v/phpsanitization/phpsanitization)
+
+## About
 Simple PHP Sanitization Class
 
 Support String, Arrays, and Associative Arrays
