@@ -1,5 +1,5 @@
 {
-    "name": "fariscode/phpsanitization",
+    "name": "phpsanitization/phpsanitization",
     "type": "library",
     "description": "Simple PHP Sanitization Class",
     "keywords": ["sanitization", "filter", "filtering"],
@@ -15,8 +15,8 @@
         "php": ">=7.0"
     },
     "autoload": {
-        "psr-0": {
-            "PhpSanitization": "src"
+        "psr-4": {
+            "PhpSanitization\\PhpSanitization\\": "src/"
         }
     }
 }
