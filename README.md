@@ -43,7 +43,10 @@ $s = new Sanitization();
 
 echo $s->esc("<script>alert('xss');</script>");
 ```
+## License
+
+This project is distributed under the MIT license
 
 ## Copyright
 
-FarisCode
+Copytighy (c) FarisCode - 2021
