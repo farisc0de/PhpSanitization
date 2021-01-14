@@ -23,6 +23,10 @@ $s = new Sanitization();
 echo $s->esc("<script>alert('xss');</script>");
 ```
 
+## Todo
+
+- [ ] Composer Integration
+- [ ] Code Documention
 
 ## Copyright
 
