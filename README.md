@@ -25,8 +25,8 @@ echo $s->esc("<script>alert('xss');</script>");
 
 ## Todo
 
-- [ ] Composer Integration
-- [ ] Code Documention
+- [x] Composer Integration
+- [x] Code Documention
 
 ## Copyright
 
