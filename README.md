@@ -15,6 +15,8 @@ composer require fariscode/phpsanitization
 ```php
 include_once 'vendor/autoload.php';
 
+use PhpSanitization\Sanitization;
+
 $s = new Sanitization("<script>alert('xss');</script>");
 
 echo $s->esc();
@@ -23,6 +25,8 @@ echo $s->esc();
 ### Without Constructor
 ```php
 include_once 'vendor/autoload.php';
+
+use PhpSanitization\Sanitization;
 
 $s = new Sanitization();
 
