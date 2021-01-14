@@ -7,6 +7,13 @@ Simple PHP Sanitization Class
 
 Support String, Arrays, and Associative Arrays
 
+## Features
+
+1. Out-Of-The-Box
+2. Support String, Arrays, and Associative Arrays
+3. Escape PDO and SQL queries
+4. Easy to Use
+
 ## How to install
 
 ```
