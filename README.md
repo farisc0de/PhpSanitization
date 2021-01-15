@@ -55,10 +55,6 @@ The documentation for PhpSanitization is available [here](https://fariscode511.g
 
 Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
 
-## Contributing
-
-Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
-
 ## Code of Conduct
 
 Please have a look at [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md).
