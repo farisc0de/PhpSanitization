@@ -23,7 +23,9 @@ $ composer require phpsanitization/phpsanitization
 
 ## Usage
 
-### With Constructor
+### Sanitize Values
+
+#### With Constructor
 
 ```php
 include_once 'vendor/autoload.php';
@@ -32,10 +34,10 @@ use PhpSanitization\PhpSanitization\Sanitization;
 
 $s = new Sanitization("<script>alert('xss');</script>");
 
-echo $s->esc();
+echo $s->useSanitize();
 ```
 
-### Without Constructor
+#### Without Constructor
 
 ```php
 include_once 'vendor/autoload.php';
@@ -44,7 +46,33 @@ use PhpSanitization\PhpSanitization\Sanitization;
 
 $s = new Sanitization();
 
-echo $s->esc("<script>alert('xss');</script>");
+echo $s->useSanitize("<script>alert('xss');</script>");
+```
+
+### Escape SQL
+
+#### With Constructor
+
+```php
+include_once 'vendor/autoload.php';
+
+use PhpSanitization\PhpSanitization\Sanitization;
+
+$s = new Sanitization("SELECT * FROM 'users' WHERE username = 'admin';");
+
+echo $s->useEscape();
+```
+
+#### Without Constructor
+
+```php
+include_once 'vendor/autoload.php';
+
+use PhpSanitization\PhpSanitization\Sanitization;
+
+$s = new Sanitization();
+
+echo $s->useEscape("SELECT * FROM 'users' WHERE username = 'admin';");
 ```
 
 ## Documentation
