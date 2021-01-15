@@ -4,7 +4,7 @@ namespace PhpSanitization\PhpSanitization\Test;
 
 use PhpSanitization\PhpSanitization\Sanitization;
 
-class SanitizationTest extends PHPUnit\Framework\TestCase
+class SanitizationTest extends \PHPUnit\Framework\TestCase
 {
     public function testCheckIfTheLibrarySanitizeString()
     {
