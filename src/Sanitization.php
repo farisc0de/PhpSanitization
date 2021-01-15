@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSanitization\PhpSanitization;
+namespace PhpSanitization;
 
 /**
  * Simple PHP Sanitization Class
