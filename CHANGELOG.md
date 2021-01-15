@@ -6,5 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## v1.0
 
-initial release
+Initial Release
+
+## v1.0.1
+
+Better Code Structure and Added Tests
+
 
