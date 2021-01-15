@@ -43,6 +43,11 @@ $s = new Sanitization();
 
 echo $s->esc("<script>alert('xss');</script>");
 ```
+
+## Documentation
+
+The documentation for PhpSanitization is available [Here](https://fariscode511.github.io/PhpSanitization/)
+
 ## License
 
 This project is distributed under the MIT license
