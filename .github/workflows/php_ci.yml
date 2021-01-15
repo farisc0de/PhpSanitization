@@ -33,7 +33,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: php-actions/phpunit@v6
 
     - name: PHPUnit tests
       uses: php-actions/phpunit@v6
