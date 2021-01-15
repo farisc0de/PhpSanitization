@@ -1,9 +1,10 @@
 <?php
 
-use PhpSanitization\PhpSanitization\Sanitization;
-use PHPUnit\Framework\TestCase;
+namespace PhpSanitization\PhpSanitization\Test;
 
-class SanitizationTest extends TestCase
+use PhpSanitization\PhpSanitization\Sanitization;
+
+class SanitizationTest extends PHPUnit\Framework\TestCase
 {
     public function testCheckIfTheLibrarySanitizeString()
     {
