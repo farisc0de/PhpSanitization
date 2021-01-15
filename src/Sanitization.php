@@ -43,9 +43,10 @@ class Sanitization
     private function sanitize($value)
     {
         $data = trim($value);
-        $data = htmlspecialchars($data, ENT_QUOTES, "UTF-8");
+        $data = htmlentities($data, ENT_QUOTES, "UTF-8");
         $data = filter_var($data, FILTER_SANITIZE_STRING);
         $data = strip_tags($data);
+        $data = stripslashes($data);
         return $data;
     }
 
@@ -81,8 +82,13 @@ class Sanitization
         }
 
         if (is_string($data)) {
+            if ($this->isEmpty($data)) {
+                return false;
+            }
+
             return $this->sanitize($data);
         }
+
 
         if (is_array($data)) {
             $santizied = [];
@@ -119,11 +125,11 @@ class Sanitization
             $data = $this->data;
         }
 
-        if (is_string($data)) {
-            return $this->escape($data);
-        } else {
+        if ($this->isEmpty($data)) {
             return false;
         }
+
+        return $this->escape($data);
     }
 
     /**
@@ -137,5 +143,18 @@ class Sanitization
     private function isAssoc(array $arr)
     {
         return array_keys($arr) !== range(0, count($arr) - 1);
+    }
+
+    /**
+     * Check if the provided variable is empty
+     *
+     * @param string $data
+     *  The variable you want to check if it's empty or not
+     * @return boolean
+     *  Return true if the variable does not contain data or false otherwise
+     */
+    private function isEmpty($data)
+    {
+        return (empty($data) || $data == "" || strlen($data) == 0);
     }
 }

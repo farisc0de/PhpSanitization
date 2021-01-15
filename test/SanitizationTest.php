@@ -44,6 +44,33 @@ class SanitizationTest extends TestCase
         );
     }
 
+    public function testCheckIfTheLibraryIdentiftyEmptyString()
+    {
+        $sanitizer = new Sanitization();
+        $sanitized = $sanitizer->useSanitize("");
+        $expected = false;
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfTheLibraryIdentiftyEmptyArray()
+    {
+        $sanitizer = new Sanitization();
+        $sanitized = $sanitizer->useSanitize([]);
+        $expected = false;
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfTheLibraryIdentiftyEmptyQuery()
+    {
+        $sanitizer = new Sanitization();
+        $sanitized = $sanitizer->useEscape("");
+        $expected = false;
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
     public function testCheckIfTheLibraryEscapeSqlQueries()
     {
         $sanitizer = new Sanitization();
