@@ -37,4 +37,5 @@ jobs:
     - name: PHPUnit tests
       uses: php-actions/phpunit@v6
       with:
+        bootstrap: vendor/autoload.php
         configuration: test/phpunit.xml
