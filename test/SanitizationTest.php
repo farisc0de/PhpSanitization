@@ -1,8 +1,8 @@
 <?php
 
-namespace PhpSanitization\Test;
+namespace PhpSanitization\PhpSanitization\Test;
 
-use PhpSanitization\Sanitization;
+use PhpSanitization\PhpSanitization\Sanitization;
 use PHPUnit\Framework\TestCase;
 
 class SanitizationTest extends TestCase

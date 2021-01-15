@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PhpSanitization\\": "src/"
+            "PhpSanitization\\PhpSanitization\\": "src/"
         }
     },
     "require-dev": {
