@@ -35,4 +35,8 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v2
+      uses: php-actions/phpunit@v9
+      with:
+        bootstrap: vendor/autoload.php
+        configuration: test/phpunit.xml
+        args: --coverage-text
