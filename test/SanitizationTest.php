@@ -1,5 +1,7 @@
 <?php
 
+namespace PhpSanitization\PhpSanitization\Test;
+
 use PhpSanitization\PhpSanitization\Sanitization;
 use PHPUnit\Framework\TestCase;
 
