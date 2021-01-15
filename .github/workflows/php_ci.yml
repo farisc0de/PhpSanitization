@@ -36,7 +36,7 @@ jobs:
     - uses: php-actions/composer@v1
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v6
+      uses: php-actions/phpunit@v9
       with:
         bootstrap: vendor/autoload.php
         configuration: test/phpunit.xml
