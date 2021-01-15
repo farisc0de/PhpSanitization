@@ -49,6 +49,12 @@ $s = new Sanitization();
 echo $s->useSanitize("<script>alert('xss');</script>");
 ```
 
+#### Output
+
+```html
+&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;
+```
+
 ### Escape SQL
 
 #### With Constructor
@@ -73,6 +79,11 @@ use PhpSanitization\PhpSanitization\Sanitization;
 $s = new Sanitization();
 
 echo $s->useEscape("SELECT * FROM 'users' WHERE username = 'admin';");
+```
+
+#### Output
+```sql
+SELECT * FROM \'users\' WHERE username = \'admin\';
 ```
 
 ## Documentation
