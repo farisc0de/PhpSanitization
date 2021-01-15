@@ -36,6 +36,11 @@ Search.appendIndex(
             "summary": "Check\u0020if\u0020the\u0020provided\u0020array\u0020is\u0020an\u0020associative\u0020or\u0020a\u0020sequential\u0020array",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isAssoc"
         },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisEmpty\u0028\u0029",
+            "name": "isEmpty",
+            "summary": "Check\u0020if\u0020the\u0020provided\u0020variable\u0020is\u0020empty",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isEmpty"
+        },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003A\u0024data",
             "name": "data",
             "summary": "The\u0020value\u0020of\u0020the\u0020malicious\u0020string\u0020you\u0020want\u0020to\u0020sanitize",
