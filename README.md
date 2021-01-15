@@ -1,6 +1,6 @@
 # PhpSanitization
 
-![](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/v/phpsanitization/phpsanitization)
+![](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/CI%20(Build%20&%20Test))
 
 ## About
 
@@ -94,5 +94,7 @@ This package is licensed using the MIT License.
 Please have a look at [`LICENSE.md`](LICENSE.md).
 
 ## Copyright
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)    
 
 Copyright (c) FarisCode - 2021
