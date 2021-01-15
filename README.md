@@ -3,6 +3,7 @@
 ![](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/v/phpsanitization/phpsanitization)
 
 ## About
+
 Simple PHP Sanitization Class
 
 Support String, Arrays, and Associative Arrays
@@ -16,13 +17,14 @@ Support String, Arrays, and Associative Arrays
 
 ## How to install
 
-```
-composer require phpsanitization/phpsanitization
+```sh
+$ composer require phpsanitization/phpsanitization
 ```
 
 ## Usage
 
 ### With Constructor
+
 ```php
 include_once 'vendor/autoload.php';
 
@@ -34,6 +36,7 @@ echo $s->esc();
 ```
 
 ### Without Constructor
+
 ```php
 include_once 'vendor/autoload.php';
 
@@ -46,11 +49,25 @@ echo $s->esc("<script>alert('xss');</script>");
 
 ## Documentation
 
-The documentation for PhpSanitization is available [Here](https://fariscode511.github.io/PhpSanitization/)
+The documentation for PhpSanitization is available [here](https://fariscode511.github.io/PhpSanitization/)
+
+## Changelog
+
+Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
+
+## Contributing
+
+Please have a look at [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+
+## Code of Conduct
+
+Please have a look at [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md).
 
 ## License
 
-This project is distributed under the MIT license
+This package is licensed using the MIT License.
+
+Please have a look at [`LICENSE.md`](LICENSE.md).
 
 ## Copyright
 

@@ -46,10 +46,23 @@ class Sanitization
         $data = htmlspecialchars($data, ENT_QUOTES, "UTF-8");
         $data = filter_var($data, FILTER_SANITIZE_STRING);
         $data = strip_tags($data);
+        return $data;
+    }
+
+    /**
+     * Escape SQL Queries
+     *
+     * @param string $value
+     *  The sql query you want to escape
+     * @return string
+     *  Return the escaped SQL query
+     */
+    private function escape($value)
+    {
         $data = str_replace(
             array("\\", "\0", "\n", "\r", "\x1a", "'", '"'),
             array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'),
-            $data
+            $value
         );
         return $data;
     }
@@ -61,7 +74,7 @@ class Sanitization
      * @return mixed
      *  Return a sanitized string, array, or associative array
      */
-    public function esc($data = null)
+    public function useSanitize($data = null)
     {
         if ($this->data != null) {
             $data = $this->data;
@@ -89,6 +102,27 @@ class Sanitization
             }
 
             return $santizied;
+        }
+    }
+
+    /**
+     * Escape SQL Queries
+     *
+     * @param string $value
+     *  The SQL query you want to escape
+     * @return string
+     *  Return the escaped SQL query or false otherwise
+     */
+    public function useEscape($data = null)
+    {
+        if ($this->data != null) {
+            $data = $this->data;
+        }
+
+        if (is_string($data)) {
+            return $this->escape($data);
+        } else {
+            return false;
         }
     }
 
