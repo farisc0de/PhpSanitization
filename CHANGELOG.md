@@ -12,4 +12,11 @@ Initial Release
 
 Better Code Structure and Added Tests
 
+## v1.0.2
 
+Better code structure and new test cases
+
+## v1.0.3
+
+1. Added Github CI ( [#1](https://github.com/fariscode511/PhpSanitization/pull/1) )
+2. Added PHP_Codesniffer as a dependency
