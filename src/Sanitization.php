@@ -46,7 +46,6 @@ class Sanitization
         $data = htmlentities($data, ENT_QUOTES, "UTF-8");
         $data = filter_var($data, FILTER_SANITIZE_STRING);
         $data = strip_tags($data);
-        $data = stripslashes($data);
         return $data;
     }
 
