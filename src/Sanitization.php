@@ -78,7 +78,7 @@ class Sanitization
      *
      * Usage:
      *  $sanitizer->useSanitize($_POST["username"]);
-     * 
+     *
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
      * @return mixed
