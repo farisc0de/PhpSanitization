@@ -28,18 +28,25 @@
   "require": {
     "php": ">=7.0"
   },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.13.2",
+    "phpunit/phpunit": "^9",
+    "squizlabs/php_codesniffer": "*"
+  },
+  "extra": {
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    }
+  },
   "autoload": {
     "psr-4": {
       "PhpSanitization\\PhpSanitization\\": "src/"
     }
   },
-  "require-dev": {
-    "phpunit/phpunit": "^9",
-    "squizlabs/php_codesniffer": "*"
-  },
   "autoload-dev": {
     "psr-4": {
-      "App\\Test\\": "test"
+      "PhpSanitization\\PhpSanitization\\Test\\": "test/"
     }
   }
 }
