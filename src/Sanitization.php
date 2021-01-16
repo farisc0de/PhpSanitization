@@ -5,8 +5,15 @@ namespace PhpSanitization\PhpSanitization;
 /**
  * Simple PHP Sanitization Class
  *
+ * This is a simple class that can verify and clean values to assure they are valid.
+ *
+ * It can take a given string and remove or encode certain types of text values, so it can
+ * be displayed in Web pages lowering the risk of being used to perform security attacks.
+ *
+ * The class can also sanitize arrays of data by processing the array values one by one.
+ *
  * @package PhpSanitization
- * @version 1.0
+ * @version 1.0.4
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
  * @link https://github.com/fariscode511/phpsanitization
@@ -69,6 +76,9 @@ class Sanitization
     /**
      * Sanatize an associative array, a sequential array or a string
      *
+     * Usage:
+     *  $sanitizer->useSanitize($_POST["username"]);
+     * 
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
      * @return mixed
@@ -112,6 +122,9 @@ class Sanitization
 
     /**
      * Escape SQL Queries
+     *
+     * Usage:
+     *  $sanitizer->useEscape("SELECT * FROM `users` WHERE `username` = 'admin'");
      *
      * @param string $value
      *  The SQL query you want to escape
