@@ -23,7 +23,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseSanitize\u0028\u0029",
             "name": "useSanitize",
-            "summary": "Like\u0020Codeigniter\u0020sanatize\u0020an\u0020associative\u0020array,\u0020a\u0020sequential\u0020array\u0020or\u0020a\u0020string",
+            "summary": "Sanatize\u0020an\u0020associative\u0020array,\u0020a\u0020sequential\u0020array\u0020or\u0020a\u0020string",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useSanitize"
         },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseEscape\u0028\u0029",
