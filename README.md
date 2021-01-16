@@ -6,7 +6,11 @@
 
 Simple PHP Sanitization Class
 
-Support String, Arrays, and Associative Arrays
+This is a simple class that can verify and clean values to assure they are valid.
+
+It can take a given string and remove or encode certain types of text values, so it can be displayed in Web pages lowering the risk of being used to perform security attacks.
+
+The class can also sanitize arrays of data by processing the array values one by one.
 
 ## Features
 
