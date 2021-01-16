@@ -67,7 +67,7 @@ class Sanitization
         return $data;
     }
     /**
-     * Like Codeigniter sanatize an associative array, a sequential array or a string
+     * Sanatize an associative array, a sequential array or a string
      *
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
