@@ -48,5 +48,9 @@
     "psr-4": {
       "PhpSanitization\\PhpSanitization\\Test\\": "test/"
     }
+  },
+  "scripts": {
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf"
   }
 }

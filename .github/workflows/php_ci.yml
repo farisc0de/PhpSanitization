@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -30,10 +31,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v1
 
       - name: PHPUnit tests
         uses: php-actions/phpunit@v9
         with:
           bootstrap: vendor/autoload.php
-          configuration: test/phpunit.xml
+          configuration: .phpunit.xml
+
+  phpcs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Detect coding standard violations
+        run: composer cs-check
