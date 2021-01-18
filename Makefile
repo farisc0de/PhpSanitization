@@ -1,5 +1,5 @@
 .PHONY: it
-it: coding-standards tests ## Runs the coding-standards, static-code-analysis, and tests targets
+it: coding-standards tests ## Runs the coding-standards and tests targets
 
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
@@ -7,7 +7,7 @@ code-coverage: vendor ## Collects coverage from running unit tests with phpunit/
 	vendor/bin/phpunit --configuration=./.phpunit.xml --coverage-text
 
 .PHONY: coding-standards
-coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, lints YAML files with yamllint and fixes code style issues with friendsofphp/php-cs-fixer
+coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with squizlabs/php_codesniffer
 	composer normalize
 	composer cs-check
 	composer cs-fix

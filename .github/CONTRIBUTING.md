@@ -62,3 +62,23 @@ $ make tests
 ```
 
 to run all the tests.
+
+## Extra lazy?
+
+Run
+
+```
+$ make
+```
+
+to enforce coding standards, and run tests!
+
+## Help
+
+:bulb: Run
+
+```
+$ make help
+```
+
+to display a list of available targets with corresponding descriptions.
