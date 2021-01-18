@@ -31,6 +31,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: php-actions/composer@v1
 
       - name: PHPUnit tests
         uses: php-actions/phpunit@v9
@@ -42,8 +43,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v1
+      - uses: php-actions/php_codesniffer@*
 
       - name: Detect coding standard violations
         run: composer cs-check
