@@ -20,3 +20,15 @@ Better code structure and new test cases
 
 1. Added Github CI ( [#1](https://github.com/fariscode511/PhpSanitization/pull/1) )
 2. Added PHP_Codesniffer as a dependency
+
+## v1.0.4
+
+1. Added Examples
+2. Added Library to PHPClasses
+3 Fixed Documentation Issues
+
+## v1.0.5
+
+1. Updated Workflow
+2. Added Composer Normalize as a dependency
+3. Cleaner File Structure
