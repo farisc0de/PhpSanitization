@@ -3,7 +3,6 @@ it: coding-standards tests ## Runs the coding-standards and tests targets
 
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
-	mkdir -p .build/phpunit
 	vendor/bin/phpunit --configuration=./.phpunit.xml --coverage-text
 
 .PHONY: coding-standards

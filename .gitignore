@@ -3,3 +3,4 @@
 /.notes/
 
 *.cache
+.phpcs-cache
