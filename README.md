@@ -19,6 +19,10 @@ The class can also sanitize arrays of data by processing the array values one by
 3. Escape PDO and SQL queries
 4. Easy to Use
 
+## Requirements
+1. PHP 7.0+
+2. [Composer](https://getcomposer.org/)
+
 ## How to install
 
 ```sh
