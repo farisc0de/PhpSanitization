@@ -1,6 +1,6 @@
 # PhpSanitization
 
-![](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/CI%20(Build%20&%20Test))
+![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/CI%20(Build%20&%20Test))
 
 ## About
 
@@ -72,7 +72,7 @@ include_once 'vendor/autoload.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
 
-$s = new Sanitization("SELECT * FROM 'users' WHERE username = 'admin';");
+$s = new Sanitization("SELECT * FROM `users` WHERE `username` = \'admin\';");
 
 echo $s->useEscape();
 ```
@@ -86,12 +86,12 @@ use PhpSanitization\PhpSanitization\Sanitization;
 
 $s = new Sanitization();
 
-echo $s->useEscape("SELECT * FROM 'users' WHERE username = 'admin';");
+echo $s->useEscape("SELECT * FROM `users` WHERE `username` = \'admin\';");
 ```
 
 #### Output
 ```sql
-SELECT * FROM \'users\' WHERE username = \'admin\';
+SELECT * FROM `users` WHERE `username` = \'admin\';
 ```
 
 ## Documentation
