@@ -25,10 +25,18 @@ Better code structure and new test cases
 
 1. Added Examples
 2. Added Library to PHPClasses
-3 Fixed Documentation Issues
+3. Fixed Documentation Issues
 
 ## v1.0.5
 
 1. Updated Workflow
 2. Added Composer Normalize as a dependency
 3. Cleaner File Structure
+
+## v1.0.6
+
+1. Updated Workflow
+2. Fixed Examples
+3. Added composer-require-checker
+4. Updated Documentation
+5. Added Make file
