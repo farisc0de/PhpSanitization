@@ -72,7 +72,7 @@ include_once 'vendor/autoload.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
 
-$s = new Sanitization("SELECT * FROM `users` WHERE `username` = \'admin\';");
+$s = new Sanitization("SELECT * FROM `users` WHERE `username` = 'admin';");
 
 echo $s->useEscape();
 ```
@@ -86,7 +86,7 @@ use PhpSanitization\PhpSanitization\Sanitization;
 
 $s = new Sanitization();
 
-echo $s->useEscape("SELECT * FROM `users` WHERE `username` = \'admin\';");
+echo $s->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
 ```
 
 #### Output
