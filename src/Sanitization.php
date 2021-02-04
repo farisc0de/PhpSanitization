@@ -49,11 +49,99 @@ class Sanitization
      */
     private function sanitize($value)
     {
-        $data = trim($value);
-        $data = htmlentities($data, ENT_QUOTES, "UTF-8");
-        $data = filter_var($data, FILTER_SANITIZE_STRING);
-        $data = strip_tags($data);
+        $data = $this->useTrim($value);
+        $data = $this->useHtmlEntities($data);
+        $data = $this->useFilterVar($data);
+        $data = $this->useStripTags($data);
         return $data;
+    }
+
+    /**
+     * Strip whitespace from the beginning and end of a string
+     *
+     * @param string $data
+     *  The string that will be trimmed.
+     * @return string
+     *  The trimmed string.
+     */
+    public function useTrim($data)
+    {
+        return trim($data);
+    }
+
+    /**
+     * Convert all applicable characters to HTML entities
+     *
+     * @param string $data
+     *  The input string.
+     * @param int $quote_style
+     *  quote_style parameter lets you define what will be done with 'single' and "double" quotes.
+     * @param string $charset
+     *  used in conversion. Presently, the UTF-8 character set is used as the default
+     * @return string
+     *  The encoded string
+     */
+    public function useHtmlEntities($data, $quote_style = ENT_QUOTES, $charset = "UTF-8")
+    {
+        return htmlentities($data, $quote_style, $charset);
+    }
+
+    /**
+     * Filters a variable with a specified filter
+     *
+     * @param mixed $data
+     *  Value to filter.
+     * @param int $filter
+     *  The ID of the filter to apply. The manual page lists the available filters.
+     * @return mixed
+     *  the filtered data, or FALSE if the filter fails.
+     */
+    public function useFilterVar($data, $filter = FILTER_SANITIZE_STRING)
+    {
+        return filter_var($data, $filter);
+    }
+
+    /**
+     * Strip HTML and PHP tags from a string
+     *
+     * @param string $data
+     *  The input string.
+     * @return string
+     *  the stripped string.
+     */
+    public function useStripTags($data)
+    {
+        return strip_tags($data);
+    }
+
+    /**
+     * Un-quotes a quoted string
+     *
+     * @param string $data
+     *  The input string.
+     * @return string
+     *  String with backslashes stripped off, Double backslashes are made into a single backslash.
+     */
+    public function useStripSlashes($data)
+    {
+        return stripslashes($data);
+    }
+
+    /**
+     * Convert special characters to HTML entities
+     *
+     * @param string $data
+     *  The string being converted.
+     * @param int $flags
+     *  A bitmask of one or more of the following flags, which specify how to handle quotes
+     * @param string $encoding
+     *  Defines encoding used in conversion.
+     * @return string
+     *  The converted string.
+     */
+    public function useHtmlSpecialChars($data, $flags = ENT_QUOTES, $encoding = "UTF-8")
+    {
+        return htmlspecialchars($data, $flags, $encoding);
     }
 
     /**
@@ -106,7 +194,7 @@ class Sanitization
                 return false;
             }
 
-            if ($this->isAssoc($data) == false) {
+            if ($this->isAssociative($data) == false) {
                 foreach ($data as $value) {
                     $santizied[] = $this->sanitize($value);
                 }
@@ -152,7 +240,7 @@ class Sanitization
      * @return boolean
      *  Return true if provided array is an associative or false otherwise
      */
-    private function isAssoc(array $arr)
+    private function isAssociative(array $arr)
     {
         return array_keys($arr) !== range(0, count($arr) - 1);
     }

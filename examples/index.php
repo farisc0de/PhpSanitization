@@ -21,19 +21,43 @@ $sanitizer = new Sanitization();
 
     <h2>Sanitize String:</h2>
 
-    <p><b>Output:</b> <?php include_once './sanitize_string.php'; ?></p>
+    <p><b>Output:</b> <?php include_once './sanitize_string_example.php'; ?></p>
 
     <h2>Sanitize Array:</h2>
 
-    <p><b>Output:</b> <?php include_once './sanitize_array.php'; ?></p>
+    <p><b>Output:</b> <?php include_once './sanitize_array_example.php'; ?></p>
 
     <h2>Sanitize Associative Array:</h2>
 
-    <p><b>Output:</b> <?php include_once './sanitize_associative_array.php'; ?></p>
+    <p><b>Output:</b> <?php include_once './sanitize_associative_array_example.php'; ?></p>
 
     <h2>Escape SQL Queries:</h2>
 
-    <p><b>Output:</b> <?php include_once './escape_sql_query.php'; ?></p>
+    <p><b>Output:</b> <?php include_once './escape_sql_query_example.php'; ?></p>
+
+    <h2>useTrim Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_trim_output.php'; ?></p>
+
+    <h2>useHtmlEntities Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_html_entities_example.php'; ?></p>
+
+    <h2>useFilterVar Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_filter_var_example.php'; ?></p>
+
+    <h2>useStripTags Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_strip_tags_example.php'; ?></p>
+
+    <h2>useStripSlashes Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_strip_slashes_example.php'; ?></p>
+
+    <h2>useHtmlSpecialChars Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './use_html_special_chars_example.php'; ?></p>
 </body>
 
 </html>

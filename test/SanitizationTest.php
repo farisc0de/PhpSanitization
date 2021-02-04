@@ -86,4 +86,76 @@ class SanitizationTest extends TestCase
             $escaped
         );
     }
+
+    public function testCheckIfUseTrimWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useTrim(" This is a text ");
+        $expected = "This is a text";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
+
+    public function testCheckIfUseHtmlEntitiesWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
+        $expected = "&lt;script&gt;alert(&#039;This is js code&#039;);&lt;/script&gt;";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
+
+    public function testCheckIfUseFilterVarWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useFilterVar("This is a string");
+        $expected = "This is a string";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
+
+    public function testCheckIfUseStripTagsWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useStripTags("<script>alert('This is js code');</script>");
+        $expected = "alert('This is js code');";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
+
+    public function testCheckIfUseStripSlashesWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useStripSlashes("C:\Users\Faris\Music");
+        $expected = "C:UsersFarisMusic";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
+
+    public function testCheckIfUseHtmlSpecialCharsWorks()
+    {
+        $sanitizer = new Sanitization();
+        $escaped = $sanitizer->useHtmlSpecialChars("<script>alert('This is js code');</script>");
+        $expected = "&lt;script&gt;alert(&#039;This is js code&#039;);&lt;/script&gt;";
+
+        $this->assertEquals(
+            $expected,
+            $escaped
+        );
+    }
 }
