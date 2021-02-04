@@ -1,6 +1,6 @@
 # PhpSanitization
 
-![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6]( https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/Workflow )
+![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/Workflow)
 
 ## About
 
@@ -20,6 +20,7 @@ The class can also sanitize arrays of data by processing the array values one by
 4. Easy to Use
 
 ## Requirements
+
 1. PHP 7.0+
 2. [Composer](https://getcomposer.org/)
 
@@ -90,6 +91,7 @@ echo $s->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
 ```
 
 #### Output
+
 ```sql
 SELECT * FROM `users` WHERE `username` = \'admin\';
 ```
@@ -118,6 +120,6 @@ Please have a look at [`LICENSE.md`](LICENSE.md).
 
 ## Copyright
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)    
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)
 
 Copyright (c) FarisCode - 2021
