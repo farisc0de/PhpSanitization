@@ -16,6 +16,36 @@ Search.appendIndex(
             "summary": "Sanitize\u0020value",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_sanitize"
         },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseTrim\u0028\u0029",
+            "name": "useTrim",
+            "summary": "Strip\u0020whitespace\u0020from\u0020the\u0020beginning\u0020and\u0020end\u0020of\u0020a\u0020string",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useTrim"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseHtmlEntities\u0028\u0029",
+            "name": "useHtmlEntities",
+            "summary": "Convert\u0020all\u0020applicable\u0020characters\u0020to\u0020HTML\u0020entities",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useHtmlEntities"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseFilterVar\u0028\u0029",
+            "name": "useFilterVar",
+            "summary": "Filters\u0020a\u0020variable\u0020with\u0020a\u0020specified\u0020filter",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useFilterVar"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseStripTags\u0028\u0029",
+            "name": "useStripTags",
+            "summary": "Strip\u0020HTML\u0020and\u0020PHP\u0020tags\u0020from\u0020a\u0020string",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useStripTags"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseStripSlashes\u0028\u0029",
+            "name": "useStripSlashes",
+            "summary": "Un\u002Dquotes\u0020a\u0020quoted\u0020string",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useStripSlashes"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseHtmlSpecialChars\u0028\u0029",
+            "name": "useHtmlSpecialChars",
+            "summary": "Convert\u0020special\u0020characters\u0020to\u0020HTML\u0020entities",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useHtmlSpecialChars"
+        },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003Aescape\u0028\u0029",
             "name": "escape",
             "summary": "Escape\u0020SQL\u0020Queries",
@@ -31,10 +61,10 @@ Search.appendIndex(
             "summary": "Escape\u0020SQL\u0020Queries",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useEscape"
         },                {
-            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisAssoc\u0028\u0029",
-            "name": "isAssoc",
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisAssociative\u0028\u0029",
+            "name": "isAssociative",
             "summary": "Check\u0020if\u0020the\u0020provided\u0020array\u0020is\u0020an\u0020associative\u0020or\u0020a\u0020sequential\u0020array",
-            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isAssoc"
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isAssociative"
         },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisEmpty\u0028\u0029",
             "name": "isEmpty",
