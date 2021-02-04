@@ -13,7 +13,7 @@ namespace PhpSanitization\PhpSanitization;
  * The class can also sanitize arrays of data by processing the array values one by one.
  *
  * @package PhpSanitization
- * @version 1.0.4
+ * @version 1.0.7
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
  * @link https://github.com/fariscode511/phpsanitization
