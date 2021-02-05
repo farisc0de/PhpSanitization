@@ -61,12 +61,27 @@ class Sanitization
      *
      * @param string $data
      *  The string that will be trimmed.
+     * @param string $from_where
+     *  Defined from where do you want to trim whitespaces (Left, Right, Both)
      * @return string
      *  The trimmed string.
      */
-    public function useTrim($data)
+    public function useTrim($data, $from_where = "both")
     {
-        return trim($data);
+        switch ($from_where) {
+            case 'left':
+                return ltrim($data);
+                break;
+
+            case 'right':
+                return rtrim($data);
+                break;
+
+            case 'both':
+            default:
+                return trim($data);
+                break;
+        }
     }
 
     /**

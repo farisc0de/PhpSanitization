@@ -30,6 +30,7 @@
     "ext-filter": ">= 7.0"
   },
   "require-dev": {
+    "ocramius/package-versions": "*",
     "ergebnis/composer-normalize": "^2.13.2",
     "ergebnis/license": "^1.1.0",
     "ergebnis/php-cs-fixer-config": "~2.13.0",
@@ -63,12 +64,12 @@
       "PhpSanitization\\PhpSanitization\\Test\\": "test/"
     }
   },
-  "support": {
-    "issues": "https://github.com/fariscode511/PhpSanitization/issues",
-    "source": "https://github.com/fariscode511/PhpSanitization"
-  },
   "scripts": {
     "cs-check": "phpcs",
     "cs-fix": "phpcbf"
+  },
+  "support": {
+    "issues": "https://github.com/fariscode511/PhpSanitization/issues",
+    "source": "https://github.com/fariscode511/PhpSanitization"
   }
 }
