@@ -98,6 +98,10 @@ echo $s->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
 SELECT * FROM `users` WHERE `username` = \'admin\';
 ```
 
+## Screenshot
+
+![Screenshot](https://f.top4top.io/p_1862u2uul1.png)
+
 ## Documentation
 
 The documentation for PhpSanitization is available [here](https://fariscode511.github.io/PhpSanitization/)
