@@ -37,7 +37,7 @@ $sanitizer = new Sanitization();
 
     <h2>useTrim Function:</h2>
 
-    <p><b>Output:</b> <?php include_once './use_trim_output.php'; ?></p>
+    <p><b>Output:</b> <?php include_once './use_trim_example.php'; ?></p>
 
     <h2>useHtmlEntities Function:</h2>
 
