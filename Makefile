@@ -1,5 +1,5 @@
 .PHONY: it
-it: coding-standards tests ## Runs the coding-standards and tests targets
+it: coding-standards static-code-analysis tests ## Runs the coding-standards and tests targets
 
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
