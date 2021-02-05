@@ -40,3 +40,11 @@ Better code structure and new test cases
 3. Added composer-require-checker
 4. Updated Documentation
 5. Added Make file
+
+## 1.0.7
+
+1. Added Reusable Functions
+2. Cleaner Code Structure
+3. Added New Tests
+4. Added New Examples
+5. Updated Docs

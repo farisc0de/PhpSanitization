@@ -49,6 +49,12 @@ Example:
  */
 ```
 
+## Examples
+
+ Each new function has to have an example in the "examples" folder and named using this name convention
+ 
+ ``` function_name_example.php ```
+
 ## Tests
 
 Each new function has to have at least one test case and the function should pass that test without errors.
