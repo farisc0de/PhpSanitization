@@ -1,6 +1,7 @@
 # PhpSanitization
 
-![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/Workflow)
+![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/Workflow) [![codecov](https://codecov.io/gh/fariscode511/PhpSanitization/branch/main/graph/badge.svg?token=14M6FFMGV1)](https://codecov.io/gh/fariscode511/PhpSanitization)
+
 
 ## About
 
