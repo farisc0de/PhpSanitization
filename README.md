@@ -39,68 +39,62 @@ $ composer require phpsanitization/phpsanitization
 
 ## Usage
 
-### Sanitize Values
-
-#### With Constructor
+### Class Inclusion
 
 ```php
 include_once 'vendor/autoload.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
 
-$s = new Sanitization("<script>alert('xss');</script>");
-
-echo $s->useSanitize();
+$sanitizer = new Sanitization();
 ```
 
-#### Without Constructor
+#### useSanitize
 
 ```php
-include_once 'vendor/autoload.php';
-
-use PhpSanitization\PhpSanitization\Sanitization;
-
-$s = new Sanitization();
-
-echo $s->useSanitize("<script>alert('xss');</script>");
+echo $sanitizer->useSanitize("<script>alert('xss');</script>");
 ```
 
-#### Output
-
-```html
-&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;
-```
-
-### Escape SQL
-
-#### With Constructor
+#### useEscape
 
 ```php
-include_once 'vendor/autoload.php';
-
-use PhpSanitization\PhpSanitization\Sanitization;
-
-$s = new Sanitization("SELECT * FROM `users` WHERE `username` = 'admin';");
-
-echo $s->useEscape();
+echo $sanitizer->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
 ```
 
-#### Without Constructor
+#### useTrim
 
 ```php
-include_once 'vendor/autoload.php';
-
-use PhpSanitization\PhpSanitization\Sanitization;
-
-$s = new Sanitization();
-
-echo $s->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
+echo $sanitizer->useTrim(" This is a text ");
 ```
 
-#### Output
+#### useHtmlEntities
 
-```sql
-SELECT * FROM `users` WHERE `username` = \'admin\';
+```php
+echo $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
+```
+
+#### useFilterVar
+
+```php
+echo $sanitizer->useFilterVar("This is a string");
+```
+
+#### useStripTags
+
+```php
+echo $sanitizer->useStripTags("<script>alert('This is js code');</script>");
+```
+
+#### useStripSlashes
+
+```php
+echo $sanitizer->useStripSlashes("C:\Users\Faris\Music");
+```
+
+#### useHtmlSpecialChars
+
+```php
+echo $sanitizer->useHtmlSpecialChars("<script>alert('This is js code');</script>");
 ```
 
 ## Screenshot
