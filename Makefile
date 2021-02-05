@@ -3,7 +3,7 @@ it: coding-standards tests ## Runs the coding-standards and tests targets
 
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
-	vendor/bin/phpunit --configuration=./.phpunit.xml --coverage-text
+	vendor/bin/phpunit --configuration=./phpunit.xml --coverage-text
 
 .PHONY: coding-standards
 coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with squizlabs/php_codesniffer
@@ -21,8 +21,12 @@ help: ## Displays this list of targets with descriptions
 
 .PHONY: tests
 tests: vendor ## Runs auto-review, unit, and integration tests with phpunit/phpunit
-	vendor/bin/phpunit --configuration=./.phpunit.xml
+	vendor/bin/phpunit --configuration=./phpunit.xml
 
 vendor: composer.json composer.lock
 	composer validate --strict
 	composer install --no-interaction --no-progress
+
+.PHONY: mutation-tests
+mutation-tests: vendor ## Runs mutation tests with infection/infection
+	vendor/bin/infection --configuration=infection.json

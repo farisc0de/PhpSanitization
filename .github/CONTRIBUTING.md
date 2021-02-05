@@ -4,11 +4,27 @@ We are using [GitHub Actions](https://github.com/features/actions) as a continuo
 
 For details, take a look at the following workflow configuration file:
 
-- [`workflows/php_ci.yml`](workflows/php_ci.yml)
+-   [`workflows/php_ci.yml`](workflows/php_ci.yml)
 
 ## Coding Standards
 
 This library code is written with PSR-12 in mind so please use the same coding standard when implementing a new feature
+
+We are using `[yamllint](https://github.com/adrienverge/yamllint)` to enforce coding standards in YAML files.
+
+If you do not have `yamllint` installed yet, run
+
+```
+$ brew install yamllint
+```
+
+or
+
+```
+pip install --user yamllint
+```
+
+to install `yamllint`.
 
 We are using `squizlabs/php_codesniffer` to enforce coding standards in PHP files.
 
@@ -51,9 +67,9 @@ Example:
 
 ## Examples
 
- Each new function has to have an example in the "examples" folder and named using this name convention
- 
- ``` function_name_example.php ```
+Each new function has to have an example in the "examples" folder and named using this name convention
+
+`function_name_example.php`
 
 ## Tests
 
@@ -68,6 +84,18 @@ $ make tests
 ```
 
 to run all the tests.
+
+## Mutation Tests
+
+We are using `infection/infection` to ensure a minimum quality of the tests.
+
+Enable `pcov` or `Xdebug` and run
+
+```
+$ make mutation-tests
+```
+
+to run mutation tests.
 
 ## Extra lazy?
 
