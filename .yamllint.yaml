@@ -1,6 +1,7 @@
 extends: "default"
 
 ignore: |
+  .github/
   .build/
   .notes/
   vendor/

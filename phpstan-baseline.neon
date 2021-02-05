@@ -1,0 +1,152 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^File is missing a \"declare\\(strict_types\\=1\\)\" declaration\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Class PhpSanitization\\\\PhpSanitization\\\\Sanitization is neither abstract nor final\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Constructor in PhpSanitization\\\\PhpSanitization\\\\Sanitization has parameter \\$data with default value\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:__construct\\(\\) has parameter \\$data with null as default value\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:useSanitize\\(\\) has parameter \\$data with null as default value\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:useSanitize\\(\\) should return mixed but return statement is missing\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:useEscape\\(\\) has parameter \\$data with no typehint specified\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:useEscape\\(\\) has parameter \\$data with null as default value\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$value$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:useEscape\\(\\) should return string but returns false\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Language construct empty\\(\\) should not be used\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^File is missing a \"declare\\(strict_types\\=1\\)\" declaration\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Class PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest is neither abstract nor final\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibrarySanitizeString\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 14
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibrarySanitizeArray\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Implicit array creation is not allowed \\- variable \\$expected does not exist\\.$#"
+			count: 3
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibrarySanitizeAssociativeArrayValues\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibrarySanitizeAssociativeArrayKeys\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibraryIdentiftyEmptyString\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibraryIdentiftyEmptyArray\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibraryIdentiftyEmptyQuery\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfTheLibraryEscapeSqlQueries\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseTrimWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseHtmlEntitiesWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseFilterVarWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseStripTagsWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseStripSlashesWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Test\\\\SanitizationTest\\:\\:testCheckIfUseHtmlSpecialCharsWorks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: test/SanitizationTest.php
+
