@@ -48,3 +48,11 @@ Better code structure and new test cases
 3. Added New Tests
 4. Added New Examples
 5. Updated Docs
+
+## 1.0.8
+
+1. Added Static Code Analysis
+2. Added Mutation Tests
+3. Added Code Coverage
+4. Fixed composer-require-checker phar file
+5. Enabled DependaBot
