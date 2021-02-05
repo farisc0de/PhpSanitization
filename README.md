@@ -1,6 +1,7 @@
 # PhpSanitization
 
 ![1](https://img.shields.io/packagist/l/phpsanitization/phpsanitization) ![2](https://img.shields.io/packagist/dt/phpsanitization/phpsanitization) ![3](https://img.shields.io/packagist/php-v/phpsanitization/phpsanitization) ![4](https://img.shields.io/packagist/stars/phpsanitization/phpsanitization) ![5](https://img.shields.io/packagist/v/phpsanitization/phpsanitization) ![6](https://img.shields.io/github/workflow/status/fariscode511/PhpSanitization/Workflow) [![codecov](https://codecov.io/gh/fariscode511/PhpSanitization/branch/main/graph/badge.svg?token=14M6FFMGV1)](https://codecov.io/gh/fariscode511/PhpSanitization)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization?ref=badge_shield)
 
 
 ## About
@@ -118,6 +119,9 @@ Please have a look at [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md).
 This package is licensed using the MIT License.
 
 Please have a look at [`LICENSE.md`](LICENSE.md).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization?ref=badge_large)
 
 ## Copyright
 
