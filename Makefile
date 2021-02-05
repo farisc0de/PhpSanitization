@@ -3,11 +3,14 @@ it: coding-standards static-code-analysis tests ## Runs the coding-standards and
 
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
+	mkdir -p .build/phpunit
 	vendor/bin/phpunit --configuration=./phpunit.xml --coverage-text
 
 .PHONY: coding-standards
-coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with squizlabs/php_codesniffer
+coding-standards: vendor ## Normalizes composer.json with ergebnis/composer-normalize, lints YAML files with yamllint, and fixes code style issues with squizlabs/php_codesniffer
 	composer normalize
+	yamllint -c .yamllint.yaml --strict .
+	mkdir -p .build/php_codesniffer
 	composer cs-check
 	composer cs-fix
 
@@ -29,15 +32,20 @@ vendor: composer.json composer.lock
 
 .PHONY: mutation-tests
 mutation-tests: vendor ## Runs mutation tests with infection/infection
+	mkdir -p .build/infection
 	vendor/bin/infection --configuration=infection.json
 
 .PHONY: static-code-analysis
 static-code-analysis: vendor ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
+	mkdir -p .build/phpstan
 	vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=-1
+	mkdir -p .build/psalm
 	vendor/bin/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
 
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan and vimeo/psalm
+	mkdir -p .build/phpstan
 	echo '' > phpstan-baseline.neon
 	vendor/bin/phpstan analyze --configuration=phpstan.neon --error-format=baselineNeon --memory-limit=-1 > phpstan-baseline.neon || true
+	mkdir -p .build/psalm
 	vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml

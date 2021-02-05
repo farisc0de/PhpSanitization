@@ -12,4 +12,4 @@ parameters:
 		- src/
 		- test/
 
-	tmpDir: ./
+	tmpDir: .build/phpstan/

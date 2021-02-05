@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
     <arg name="basepath" value="."/>
-    <arg name="cache" value=".phpcs-cache"/>
+    <arg name="cache" value=".build/php_codesniffer/.phpcs-cache"/>
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
     <arg name="parallel" value="75"/>

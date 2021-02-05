@@ -30,7 +30,6 @@
     "ext-filter": ">= 7.0"
   },
   "require-dev": {
-    "ocramius/package-versions": "*",
     "ergebnis/composer-normalize": "^2.13.2",
     "ergebnis/license": "^1.1.0",
     "ergebnis/php-cs-fixer-config": "~2.13.0",
@@ -38,6 +37,7 @@
     "ergebnis/test-util": "^1.4.0",
     "infection/infection": "~0.18.2",
     "maglnet/composer-require-checker": "^3.0",
+    "ocramius/package-versions": "*",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "~0.12.71",
     "phpstan/phpstan-deprecation-rules": "~0.12.6",

@@ -1,7 +1,7 @@
 {
   "ignoreMsiWithNoMutations": true,
   "logs": {
-    "text": "infection-log.txt"
+    "text": ".build/infection/infection-log.txt"
   },
   "minCoveredMsi": 75,
   "minMsi": 75,
