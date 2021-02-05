@@ -1,6 +1,7 @@
 /vendor/
 /.build/
 /.notes/
+/*.cache/
 
 *.cache
 .phpcs-cache
