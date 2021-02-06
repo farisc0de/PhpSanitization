@@ -247,6 +247,29 @@ class Sanitization
     }
 
     /**
+     * Setter for the $data variable
+     *
+     * @param mixed $data
+     *  The input value to set it to the $data variable
+     * @return void
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Getter for the $data variable
+     *
+     * @return mixed
+     *  Return the value of the $data variable
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
      * Check if the provided array is an associative or a sequential array
      *
      * @param array $arr
@@ -269,6 +292,6 @@ class Sanitization
      */
     private function isEmpty($data)
     {
-        return (empty($data) || $data == "" || strlen($data) == 0);
+        return (!isset($data) || empty($data));
     }
 }
