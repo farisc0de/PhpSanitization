@@ -204,7 +204,7 @@ class Sanitization
         if (is_array($data)) {
             $santizied = [];
 
-            if (array() === $data) {
+            if ($this->isEmpty($data)) {
                 return false;
             }
 
@@ -285,13 +285,23 @@ class Sanitization
     /**
      * Check if the provided variable is empty
      *
-     * @param string $data
+     * @param mixed $data
      *  The variable you want to check if it's empty or not
      * @return boolean
      *  Return true if the variable does not contain data or false otherwise
      */
     private function isEmpty($data)
     {
-        return (!isset($data) || empty($data));
+        $bool = false;
+
+        if (is_array($data)) {
+            $bool = array() === $data;
+        }
+
+        if (is_string($data)) {
+            $bool = ($data == null);
+        }
+
+        return $bool;
     }
 }
