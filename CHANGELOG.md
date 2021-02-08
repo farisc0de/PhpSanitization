@@ -56,3 +56,12 @@ Better code structure and new test cases
 3. Added Code Coverage
 4. Fixed composer-require-checker phar file
 5. Enabled DependaBot
+
+## v1.0.9
+
+1. Added getter and setter for $data
+2. The class is now final
+3. Fixed some code violations
+4. Added New Test Cases
+5. Added New Examples
+6. Updated Docs
