@@ -204,7 +204,7 @@ class Sanitization
         if (is_array($data)) {
             $santizied = [];
 
-            if (array() === $data) {
+            if ($this->isEmpty($data)) {
                 return false;
             }
 
@@ -212,7 +212,9 @@ class Sanitization
                 foreach ($data as $value) {
                     $santizied[] = $this->sanitize($value);
                 }
-            } else {
+            }
+
+            if ($this->isAssociative($data) == true) {
                 foreach ($data as $key => $value) {
                     $santizied[$this->sanitize($key)] = $this->sanitize($value);
                 }
@@ -247,6 +249,29 @@ class Sanitization
     }
 
     /**
+     * Setter for the $data variable
+     *
+     * @param mixed $data
+     *  The input value to set it to the $data variable
+     * @return void
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Getter for the $data variable
+     *
+     * @return mixed
+     *  Return the value of the $data variable
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
      * Check if the provided array is an associative or a sequential array
      *
      * @param array $arr
@@ -262,13 +287,23 @@ class Sanitization
     /**
      * Check if the provided variable is empty
      *
-     * @param string $data
+     * @param mixed $data
      *  The variable you want to check if it's empty or not
      * @return boolean
      *  Return true if the variable does not contain data or false otherwise
      */
     private function isEmpty($data)
     {
-        return (empty($data) || $data == "" || strlen($data) == 0);
+        $bool = false;
+
+        if (is_array($data)) {
+            $bool = array() === $data;
+        }
+
+        if (is_string($data)) {
+            $bool = ($data == null);
+        }
+
+        return $bool;
     }
 }
