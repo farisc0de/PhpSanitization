@@ -61,6 +61,16 @@ Search.appendIndex(
             "summary": "Escape\u0020SQL\u0020Queries",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useEscape"
         },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AsetData\u0028\u0029",
+            "name": "setData",
+            "summary": "Setter\u0020for\u0020the\u0020\u0024data\u0020variable",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_setData"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AgetData\u0028\u0029",
+            "name": "getData",
+            "summary": "Getter\u0020for\u0020the\u0020\u0024data\u0020variable",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_getData"
+        },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisAssociative\u0028\u0029",
             "name": "isAssociative",
             "summary": "Check\u0020if\u0020the\u0020provided\u0020array\u0020is\u0020an\u0020associative\u0020or\u0020a\u0020sequential\u0020array",
