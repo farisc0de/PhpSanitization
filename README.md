@@ -49,52 +49,64 @@ use PhpSanitization\PhpSanitization\Sanitization;
 $sanitizer = new Sanitization();
 ```
 
-#### useSanitize
+### useSanitize
 
 ```php
 echo $sanitizer->useSanitize("<script>alert('xss');</script>");
 ```
 
-#### useEscape
+### useEscape
 
 ```php
 echo $sanitizer->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
 ```
 
-#### useTrim
+### useTrim
 
 ```php
 echo $sanitizer->useTrim(" This is a text ");
 ```
 
-#### useHtmlEntities
+### useHtmlEntities
 
 ```php
 echo $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
 ```
 
-#### useFilterVar
+### useFilterVar
 
 ```php
 echo $sanitizer->useFilterVar("This is a string");
 ```
 
-#### useStripTags
+### useStripTags
 
 ```php
 echo $sanitizer->useStripTags("<script>alert('This is js code');</script>");
 ```
 
-#### useStripSlashes
+### useStripSlashes
 
 ```php
 echo $sanitizer->useStripSlashes("C:\Users\Faris\Music");
 ```
 
-#### useHtmlSpecialChars
+### useHtmlSpecialChars
 
 ```php
 echo $sanitizer->useHtmlSpecialChars("<script>alert('This is js code');</script>");
+```
+
+### setData
+
+```php
+$sanitizer->setData("This is data");
+```
+
+### getData
+
+```php
+echo $sanitizer->getData();
 ```
 
 ## Screenshot
