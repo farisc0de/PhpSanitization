@@ -212,7 +212,9 @@ class Sanitization
                 foreach ($data as $value) {
                     $santizied[] = $this->sanitize($value);
                 }
-            } else {
+            }
+
+            if ($this->isAssociative($data) == true) {
                 foreach ($data as $key => $value) {
                     $santizied[$this->sanitize($key)] = $this->sanitize($value);
                 }
