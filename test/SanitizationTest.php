@@ -158,4 +158,27 @@ class SanitizationTest extends TestCase
             $escaped
         );
     }
+
+    public function testSetterAndGetter()
+    {
+        $sanitizer = new Sanitization();
+
+        $this->testCheckIfTheSetterCanSetData($sanitizer);
+
+        $this->testCheckIfTheGetterCanGetData($sanitizer);
+    }
+
+    private function testCheckIfTheSetterCanSetData($s)
+    {
+        $bool = $s->setData("data");
+
+        $this->assertNull($bool);
+    }
+
+    private function testCheckIfTheGetterCanGetData($s)
+    {
+        $data = $s->getData();
+
+        $this->assertEquals("data", $data);
+    }
 }

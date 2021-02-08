@@ -58,6 +58,14 @@ $sanitizer = new Sanitization();
     <h2>useHtmlSpecialChars Function:</h2>
 
     <p><b>Output:</b> <?php include_once './use_html_special_chars_example.php'; ?></p>
+
+    <h2>setData Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './data_setter_example.php'; ?></p>
+
+    <h2>getData Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './data_getter_example.php'; ?></p>
 </body>
 
 </html>

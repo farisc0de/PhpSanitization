@@ -13,12 +13,12 @@ namespace PhpSanitization\PhpSanitization;
  * The class can also sanitize arrays of data by processing the array values one by one.
  *
  * @package PhpSanitization
- * @version 1.0.7
+ * @version 1.0.9
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
  * @link https://github.com/fariscode511/phpsanitization
  */
-class Sanitization
+final class Sanitization
 {
 
     /**
@@ -253,7 +253,7 @@ class Sanitization
      *
      * @param mixed $data
      *  The input value to set it to the $data variable
-     * @return void
+     * @return bool
      */
     public function setData($data)
     {
@@ -274,14 +274,14 @@ class Sanitization
     /**
      * Check if the provided array is an associative or a sequential array
      *
-     * @param array $arr
+     * @param array $array
      *  The array you want to check it's type
      * @return boolean
      *  Return true if provided array is an associative or false otherwise
      */
-    private function isAssociative(array $arr)
+    private function isAssociative(array $array)
     {
-        return array_keys($arr) !== range(0, count($arr) - 1);
+        return array_keys($array) !== range(0, count($array) - 1);
     }
 
     /**
