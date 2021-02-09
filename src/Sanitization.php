@@ -159,6 +159,23 @@ final class Sanitization
     }
 
     /**
+     * Perform a regular expression search and replace
+     *
+     * @param string $pattern
+     *  The pattern to search for. It must be a string
+     * @param string $data
+     *  The string to search and replace.
+     * @param mixed $replacement
+     *  The string to replace
+     * @return string
+     *  Returns the replaced string
+     */
+    public function usePregReplace($pattern, $data, $replacement = "")
+    {
+        return preg_replace($pattern, $replacement, $data);
+    }
+
+    /**
      * Escape SQL Queries
      *
      * @param string $value
@@ -253,7 +270,7 @@ final class Sanitization
      *
      * @param mixed $data
      *  The input value to set it to the $data variable
-     * @return bool
+     * @return void
      */
     public function setData($data)
     {
