@@ -82,6 +82,14 @@ $sanitizer = new Sanitization();
     <h2>isValid Function:</h2>
 
     <p><b>Output:</b> <?php include_once './is_valid_example.php'; ?></p>
+
+    <h2>isEmpty Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './is_empty_example.php'; ?></p>
+
+    <h2>isAssociative Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './is_associative_exmaple.php'; ?></p>
 </body>
 
 </html>

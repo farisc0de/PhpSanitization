@@ -359,7 +359,7 @@ final class Sanitization
      * @return boolean
      *  Return true if provided array is an associative or false otherwise
      */
-    private function isAssociative($array)
+    public function isAssociative($array)
     {
         return array_keys($array) !== range(0, count($array) - 1);
     }
@@ -372,7 +372,7 @@ final class Sanitization
      * @return boolean
      *  Return true if the variable does not contain data or false otherwise
      */
-    private function isEmpty($data)
+    public function isEmpty($data)
     {
         $bool = false;
 
@@ -381,7 +381,7 @@ final class Sanitization
         }
 
         if (is_string($data)) {
-            $bool = ($data == null);
+            $bool = ($data == "");
         }
 
         return $bool;

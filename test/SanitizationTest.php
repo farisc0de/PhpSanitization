@@ -273,4 +273,28 @@ class SanitizationTest extends TestCase
 
         $this->assertEquals($expected, $validate);
     }
+
+    public function testCheckIfIsAssociativeWorks()
+    {
+        $sanitizer = new Sanitization();
+
+        $bool = $sanitizer->isAssociative([
+            "key" => "value"
+        ]);
+
+        $expected = true;
+
+        $this->assertEquals($expected, $bool);
+    }
+
+    public function testCheckIfIsEmptyWorks()
+    {
+        $sanitizer = new Sanitization();
+
+        $bool = $sanitizer->isEmpty("");
+
+        $expected = true;
+
+        $this->assertEquals($bool, $expected);
+    }
 }
