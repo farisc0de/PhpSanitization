@@ -109,6 +109,42 @@ $sanitizer->setData("This is data");
 echo $sanitizer->getData();
 ```
 
+### useStrReplace
+
+```php
+echo $sanitizer->useStrReplace("text", "", "this is a text");
+```
+
+### usePregReplace
+
+```php
+echo $sanitizer->usePregReplace("/([A-Z])\w+/", "This is a Text");
+```
+
+### validateEmail
+
+```php
+echo $sanitizer->validateEmail("fake.email@gmail.com") ? "true" : "false";
+```
+
+### isValid
+
+```php
+echo $sanitizer->isValid("127.0.0.1", FILTER_VALIDATE_IP) ? "true" : "false";
+```
+
+### isEmpty
+
+```php
+echo $sanitizer->isEmpty($variable) ? "true" : "false";
+```
+
+### isAssociative
+
+```php
+echo $sanitizer->isAssociative($array) ? "true" : "fale";
+```
+
 ## Screenshot
 
 ![Screenshot](https://f.top4top.io/p_1862u2uul1.png)
