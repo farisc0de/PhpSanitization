@@ -181,4 +181,96 @@ class SanitizationTest extends TestCase
 
         $this->assertEquals("data", $data);
     }
+
+    public function testCheckIfUsePregReplaceWorks()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->usePregReplace(
+            "/([A-Z])\w+/",
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
+        );
+        $expected = " ipsum dolor sit amet consectetur, adipisicing elit. , sint?";
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfUsePregReplaceFindNull()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->usePregReplace("/([A-Z])\w+/", "");
+        $expected = null;
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfUsePregReplaceWorksOnArray()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->usePregReplace(["/([A-Z])\w+/"], [
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
+        ]);
+        $expected[0] = " ipsum dolor sit amet consectetur, adipisicing elit. , sint?";
+
+        $this->assertEquals($expected[0], $sanitized[0]);
+    }
+
+    public function testCheckIfUseStrReplaceWorks()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->useStrReplace(
+            "Lorem",
+            "",
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
+        );
+
+        $expected = " ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?";
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfUseStrReplaceFindNull()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->useStrReplace(
+            "Lorem",
+            "",
+            ""
+        );
+
+        $expected = null;
+
+        $this->assertEquals($expected, $sanitized);
+    }
+
+    public function testCheckIfUseStrReplaceWorksOnArray()
+    {
+        $sanitizer = new Sanitization();
+
+        $sanitized = $sanitizer->useStrReplace([
+            "Lorem"
+        ], [
+            ""
+        ], [
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
+        ]);
+        $expected[0] = " ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?";
+
+        $this->assertEquals($expected[0], $sanitized[0]);
+    }
+
+    public function testCheckIfIsValidWork()
+    {
+        $sanitizer = new Sanitization();
+
+        $validate = $sanitizer->isValid("demo@gmail.com", FILTER_VALIDATE_EMAIL);
+
+        $expected = "demo@gmail.com";
+
+        $this->assertEquals($expected, $validate);
+    }
 }

@@ -13,7 +13,7 @@ namespace PhpSanitization\PhpSanitization;
  * The class can also sanitize arrays of data by processing the array values one by one.
  *
  * @package PhpSanitization
- * @version 1.0.9
+ * @version v1.0.10
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
  * @link https://github.com/fariscode511/phpsanitization
@@ -34,7 +34,7 @@ final class Sanitization
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
      */
-    public function __construct($data = null)
+    public function __construct($data = "")
     {
         $this->data = $data;
     }
@@ -106,7 +106,7 @@ final class Sanitization
      * @param mixed $data
      *  Value to filter.
      * @param int $filter
-     *  The ID of the filter to apply. The manual page lists the available filters.
+     *  The ID of the filter to apply.
      * @return mixed
      *  the filtered data, or FALSE if the filter fails.
      */
@@ -161,18 +161,35 @@ final class Sanitization
     /**
      * Perform a regular expression search and replace
      *
-     * @param string $pattern
-     *  The pattern to search for. It must be a string
-     * @param string $data
-     *  The string to search and replace.
+     * @param mixed $pattern
+     *  The pattern to search for. It can be either a string or an array with strings.
+     * @param mixed $data
+     *  The string or an array with strings to search and replace.
      * @param mixed $replacement
-     *  The string to replace
-     * @return string
-     *  Returns the replaced string
+     *  The string or an array with strings to replace.
+     * @return mixed
+     *  Returns an array if the subject parameter is an array, or a string otherwise.
      */
     public function usePregReplace($pattern, $data, $replacement = "")
     {
         return preg_replace($pattern, $replacement, $data);
+    }
+
+    /**
+     * Replace all occurrences of the search string with the replacement string
+     *
+     * @param mixed $search
+     *  The value being searched for. An array may be used to designate multiple needles.
+     * @param mixed $replace
+     *  The replacement value that replaces found search values.
+     * @param mixed $subject
+     *  The string or array being searched and replaced on, otherwise known as the haystack
+     * @return mixed
+     *  This function returns a string with the replaced values.
+     */
+    public function useStrReplace($search, $replace, $subject)
+    {
+        return str_replace($search, $replace, $subject);
     }
 
     /**
@@ -185,7 +202,7 @@ final class Sanitization
      */
     private function escape($value)
     {
-        $data = str_replace(
+        $data = $this->useStrReplace(
             array("\\", "\0", "\n", "\r", "\x1a", "'", '"'),
             array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'),
             $value
@@ -203,7 +220,7 @@ final class Sanitization
      * @return mixed
      *  Return a sanitized string, array, or associative array
      */
-    public function useSanitize($data = null)
+    public function useSanitize($data = "")
     {
         if ($this->data != null) {
             $data = $this->data;
@@ -239,6 +256,8 @@ final class Sanitization
 
             return $santizied;
         }
+
+        return false;
     }
 
     /**
@@ -247,12 +266,12 @@ final class Sanitization
      * Usage:
      *  $sanitizer->useEscape("SELECT * FROM `users` WHERE `username` = 'admin'");
      *
-     * @param string $value
+     * @param string $data
      *  The SQL query you want to escape
-     * @return string
+     * @return mixed
      *  Return the escaped SQL query or false otherwise
      */
-    public function useEscape($data = null)
+    public function useEscape($data = "")
     {
         if ($this->data != null) {
             $data = $this->data;
@@ -263,6 +282,50 @@ final class Sanitization
         }
 
         return $this->escape($data);
+    }
+
+    /**
+     * Simple email validation method
+     *
+     * @param string $email
+     *  The email address you want to validate
+     * @param array $providers
+     *  The list of providers to validate aginst
+     * @return bool
+     *  Return true if the the email is valid or false otherwise
+     */
+    public function validateEmail($email, $providers = [])
+    {
+        $email = $this->useFilterVar($email, FILTER_SANITIZE_EMAIL);
+        $domain = strtolower(substr($email, strpos($email, '@') + 1));
+        if ($this->isEmpty($providers)) {
+            $providers = [
+                'gmail.com',
+                'hotmail.com',
+                'outlook.com',
+                'msn.com',
+                'aol.com',
+                'protonmail.com'
+            ];
+        }
+        return ($this->useFilterVar($email, FILTER_VALIDATE_EMAIL) &&
+            in_array($domain, $providers) &&
+            checkdnsrr($domain) != false);
+    }
+
+    /**
+     * Filters a variable with a specified filter
+     *
+     * @param mixed $data
+     *  Value to filter.
+     * @param int $filter
+     *  The ID of the filter to apply. The manual page lists the available filters.
+     * @return mixed
+     *  the filtered data, or FALSE if the filter fails.
+     */
+    public function isValid($data, $flag)
+    {
+        return $this->useFilterVar($data, $flag);
     }
 
     /**
@@ -296,7 +359,7 @@ final class Sanitization
      * @return boolean
      *  Return true if provided array is an associative or false otherwise
      */
-    private function isAssociative(array $array)
+    private function isAssociative($array)
     {
         return array_keys($array) !== range(0, count($array) - 1);
     }

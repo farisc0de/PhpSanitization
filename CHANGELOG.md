@@ -65,3 +65,13 @@ Better code structure and new test cases
 4. Added New Test Cases
 5. Added New Examples
 6. Updated Docs
+
+## v1.0.10
+
+1. Added usePregReplace and useStrReplace for custom sanitization
+2. Added isValid Function to validate any type of data
+3. Added Simple Email Validation
+4. Fixed code violations
+5. Added New Test Cases
+6. Added New Examples
+7. Updated Docs

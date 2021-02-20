@@ -66,6 +66,22 @@ $sanitizer = new Sanitization();
     <h2>getData Function:</h2>
 
     <p><b>Output:</b> <?php include_once './data_getter_example.php'; ?></p>
+
+    <h2>useStrReplace Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './str_replace_example.php'; ?></p>
+
+    <h2>usePregReplace Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './preg_replace_example.php'; ?></p>
+
+    <h2>validateEmail Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './email_validate_example.php'; ?></p>
+
+    <h2>isValid Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './is_valid_example.php'; ?></p>
 </body>
 
 </html>

@@ -27,7 +27,7 @@
   ],
   "require": {
     "php": "^7.3 || ^8.0",
-    "ext-filter": ">= 7.3"
+    "ext-filter": "*"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.13.2",
