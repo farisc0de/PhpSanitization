@@ -46,6 +46,16 @@ Search.appendIndex(
             "summary": "Convert\u0020special\u0020characters\u0020to\u0020HTML\u0020entities",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useHtmlSpecialChars"
         },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AusePregReplace\u0028\u0029",
+            "name": "usePregReplace",
+            "summary": "Perform\u0020a\u0020regular\u0020expression\u0020search\u0020and\u0020replace",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_usePregReplace"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AuseStrReplace\u0028\u0029",
+            "name": "useStrReplace",
+            "summary": "Replace\u0020all\u0020occurrences\u0020of\u0020the\u0020search\u0020string\u0020with\u0020the\u0020replacement\u0020string",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useStrReplace"
+        },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003Aescape\u0028\u0029",
             "name": "escape",
             "summary": "Escape\u0020SQL\u0020Queries",
@@ -60,6 +70,16 @@ Search.appendIndex(
             "name": "useEscape",
             "summary": "Escape\u0020SQL\u0020Queries",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_useEscape"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AvalidateEmail\u0028\u0029",
+            "name": "validateEmail",
+            "summary": "Simple\u0020email\u0020validation\u0020method",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_validateEmail"
+        },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AisValid\u0028\u0029",
+            "name": "isValid",
+            "summary": "Filters\u0020a\u0020variable\u0020with\u0020a\u0020specified\u0020filter",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isValid"
         },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003AsetData\u0028\u0029",
             "name": "setData",
