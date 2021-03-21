@@ -24,7 +24,9 @@ The class can also sanitize arrays of data by processing the array values one by
 1. Out-Of-The-Box
 2. Support String, Arrays, and Associative Arrays
 3. Escape PDO and SQL queries
-4. Easy to Use
+4. Sanitize and validate email
+5. Built-in methods for custom sanitization
+6. Easy to Use
 
 ## Requirements
 
