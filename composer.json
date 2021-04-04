@@ -17,7 +17,7 @@
     "php-sanitize",
     "php-sanitization"
   ],
-  "homepage": "https://github.com/fariscode511/PhpSanitization",
+  "homepage": "https://github.com/farisd3v/PhpSanitization",
   "license": "MIT",
   "authors": [
     {
@@ -69,7 +69,7 @@
     "cs-fix": "phpcbf"
   },
   "support": {
-    "issues": "https://github.com/fariscode511/PhpSanitization/issues",
-    "source": "https://github.com/fariscode511/PhpSanitization"
+    "issues": "https://github.com/farisd3v/PhpSanitization/issues",
+    "source": "https://github.com/farisd3v/PhpSanitization"
   }
 }
