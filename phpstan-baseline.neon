@@ -1,2 +1,37 @@
 parameters:
 	ignoreErrors:
+		-
+			message: "#^File is missing a \"declare\\(strict_types\\=1\\)\" declaration\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Constructor in PhpSanitization\\\\PhpSanitization\\\\Sanitization has parameter \\$data with default value\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Only numeric types are allowed in \\+, int\\<0, max\\>\\|false given on the left side\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Only booleans are allowed in &&, mixed given on the left side\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be set\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^Method PhpSanitization\\\\PhpSanitization\\\\Sanitization\\:\\:isValid\\(\\) has parameter \\$flag with no typehint specified\\.$#"
+			count: 1
+			path: src/Sanitization.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$filter$#"
+			count: 1
+			path: src/Sanitization.php
+

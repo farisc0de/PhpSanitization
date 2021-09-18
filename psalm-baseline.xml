@@ -1,2 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224"></files>
+<files psalm-version="4.6.1@e93e532e4eaad6d68c4d7b606853800eaceccc72">
+  <file src="src/Sanitization.php">
+    <InvalidDocblockParamName occurrences="1">
+      <code>$filter</code>
+    </InvalidDocblockParamName>
+    <MissingParamType occurrences="1">
+      <code>$flag</code>
+    </MissingParamType>
+    <MixedArgument occurrences="13">
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$email</code>
+      <code>$email</code>
+      <code>$flag</code>
+      <code>$pattern</code>
+      <code>$replace</code>
+      <code>$replacement</code>
+      <code>$search</code>
+      <code>$subject</code>
+      <code>$value</code>
+      <code>$value</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$key</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="7">
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$email</code>
+      <code>$value</code>
+      <code>$value</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$data</code>
+    </MixedReturnStatement>
+    <PossiblyFalseOperand occurrences="1">
+      <code>strpos($email, '@')</code>
+    </PossiblyFalseOperand>
+  </file>
+  <file src="test/SanitizationTest.php">
+    <MissingParamType occurrences="2">
+      <code>$s</code>
+      <code>$s</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="26">
+      <code>testCheckIfIsAssociativeWorks</code>
+      <code>testCheckIfIsEmptyWorks</code>
+      <code>testCheckIfIsValidWork</code>
+      <code>testCheckIfTheGetterCanGetData</code>
+      <code>testCheckIfTheLibraryEscapeSqlQueries</code>
+      <code>testCheckIfTheLibraryIdentiftyEmptyArray</code>
+      <code>testCheckIfTheLibraryIdentiftyEmptyQuery</code>
+      <code>testCheckIfTheLibraryIdentiftyEmptyString</code>
+      <code>testCheckIfTheLibrarySanitizeArray</code>
+      <code>testCheckIfTheLibrarySanitizeAssociativeArrayKeys</code>
+      <code>testCheckIfTheLibrarySanitizeAssociativeArrayValues</code>
+      <code>testCheckIfTheLibrarySanitizeString</code>
+      <code>testCheckIfTheSetterCanSetData</code>
+      <code>testCheckIfUseFilterVarWorks</code>
+      <code>testCheckIfUseHtmlEntitiesWorks</code>
+      <code>testCheckIfUseHtmlSpecialCharsWorks</code>
+      <code>testCheckIfUsePregReplaceFindNull</code>
+      <code>testCheckIfUsePregReplaceWorks</code>
+      <code>testCheckIfUsePregReplaceWorksOnArray</code>
+      <code>testCheckIfUseStrReplaceFindNull</code>
+      <code>testCheckIfUseStrReplaceWorks</code>
+      <code>testCheckIfUseStrReplaceWorksOnArray</code>
+      <code>testCheckIfUseStripSlashesWorks</code>
+      <code>testCheckIfUseStripTagsWorks</code>
+      <code>testCheckIfUseTrimWorks</code>
+      <code>testSetterAndGetter</code>
+    </MissingReturnType>
+    <MixedArrayAccess occurrences="5">
+      <code>$sanitized["sql&amp;#039;"]</code>
+      <code>$sanitized["xss"]</code>
+      <code>$sanitized[0]</code>
+      <code>$sanitized[0]</code>
+      <code>$sanitized[0]</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="17">
+      <code>$data</code>
+      <code>$escaped</code>
+      <code>$escaped</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$sanitized</code>
+      <code>$validate</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="2">
+      <code>getData</code>
+      <code>setData</code>
+    </MixedMethodCall>
+    <PossiblyUndefinedVariable occurrences="5">
+      <code>$expected</code>
+      <code>$expected</code>
+      <code>$expected</code>
+      <code>$expected</code>
+      <code>$expected</code>
+    </PossiblyUndefinedVariable>
+  </file>
+</files>
