@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - uses: "actions/checkout@v2.4.0"
-      - uses: "php-actions/composer@v5"
+      - uses: "php-actions/composer@v6"
 
       - name: "PHPUnit tests"
         uses: "php-actions/phpunit@v9"
