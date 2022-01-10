@@ -5,7 +5,7 @@
 
 # PhpSanitization
 
-![](https://img.shields.io/github/license/farisc0de/PhpSanitization) ![](https://img.shields.io/github/v/tag/farisc0de/PhpSanitization) ![](https://img.shields.io/github/repo-size/farisc0de/PhpSanitization) ![](https://img.shields.io/github/languages/top/farisc0de/PhpSanitization) ![](https://img.shields.io/github/commits-since/farisc0de/PhpSanitization/v1.0.10)
+![](https://img.shields.io/github/license/farisc0de/PhpSanitization) ![](https://img.shields.io/github/v/tag/farisc0de/PhpSanitization) ![](https://img.shields.io/github/repo-size/farisc0de/PhpSanitization) ![](https://img.shields.io/github/languages/top/farisc0de/PhpSanitization) ![](https://img.shields.io/github/commits-since/farisc0de/PhpSanitization/v1.0.11)
 
 ## About
 
