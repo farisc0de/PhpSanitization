@@ -44,7 +44,6 @@
     "phpstan/phpstan-phpunit": "*",
     "phpstan/phpstan-strict-rules": "*",
     "phpunit/phpunit": "*",
-    "psalm/plugin-phpunit": "*",
     "squizlabs/php_codesniffer": "*"
   },
   "extra": {
