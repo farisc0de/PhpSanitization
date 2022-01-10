@@ -3,19 +3,19 @@
 dependencies="${COMPOSER_INSTALL_DEPENDENCIES}"
 
 if [[ ${dependencies} == "lowest" ]]; then
-  composer update --no-interaction --no-progress --prefer-lowest
+  composer update --no-interaction --no-progress --prefer-lowest --ignore-platform-reqs
 
   exit $?
 fi
 
 if [[ ${dependencies} == "locked" ]]; then
-  composer install --no-interaction --no-progress
+  composer install --no-interaction --no-progress --ignore-platform-reqs
 
   exit $?
 fi
 
 if [[ ${dependencies} == "highest" ]]; then
-  composer update --no-interaction --no-progress
+  composer update --no-interaction --no-progress --ignore-platform-reqs
 
   exit $?
 fi
