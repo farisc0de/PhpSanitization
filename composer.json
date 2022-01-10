@@ -26,7 +26,7 @@
     }
   ],
   "require": {
-    "php": "^7.3 || ^8.0.14",
+    "php": "^7.3 || ^8.1",
     "ext-filter": "*"
   },
   "require-dev": {
@@ -69,8 +69,8 @@
     "cs-fix": "phpcbf"
   },
   "support": {
-    "issues": "https://github.com/farisd3v/PhpSanitization/issues",
-    "source": "https://github.com/farisd3v/PhpSanitization"
+    "issues": "https://github.com/farisc0de/PhpSanitization/issues",
+    "source": "https://github.com/farisc0de/PhpSanitization"
   },
   "config": {
     "allow-plugins": {
