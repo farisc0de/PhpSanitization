@@ -151,7 +151,7 @@ echo $sanitizer->isAssociative($array) ? "true" : "fale";
 
 ## Documentation
 
-The documentation for PhpSanitization is available [here](https://fariscode511.github.io/PhpSanitization/)
+The documentation for PhpSanitization is available [here](https://www.farisotaibi.com/PhpSanitization/)
 
 ## Changelog
 
