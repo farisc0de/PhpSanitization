@@ -75,3 +75,7 @@ Better code structure and new test cases
 5. Added New Test Cases
 6. Added New Examples
 7. Updated Docs
+
+## v1.0.11
+
+Just some bug fixes and cleaning
