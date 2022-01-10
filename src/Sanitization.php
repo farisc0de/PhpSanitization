@@ -20,7 +20,6 @@ namespace PhpSanitization\PhpSanitization;
  */
 final class Sanitization
 {
-
     /**
      * The value of the malicious string you want to sanitize
      *
