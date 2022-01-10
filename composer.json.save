@@ -26,27 +26,27 @@
     }
   ],
   "require": {
-    "php": ">=7.3",
+    "php": "^7.3 || ^8.0.1",
     "ext-filter": "*"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "*",
-    "ergebnis/license": "*",
-    "ergebnis/php-cs-fixer-config": "*",
-    "ergebnis/phpstan-rules": "*",
-    "ergebnis/test-util": "*",
-    "infection/infection": "*",
-    "maglnet/composer-require-checker": "*",
+    "ergebnis/composer-normalize",
+    "ergebnis/license": "^1.1.0",
+    "ergebnis/php-cs-fixer-config": "~2.13.0",
+    "ergebnis/phpstan-rules": "~0.15.3",
+    "ergebnis/test-util": "^1.4.0",
+    "infection/infection": "~0.18.2",
+    "maglnet/composer-require-checker": "^3.0",
     "ocramius/package-versions": "*",
-    "phpstan/extension-installer": "*",
-    "phpstan/phpstan": "*",
-    "phpstan/phpstan-deprecation-rules": "*",
-    "phpstan/phpstan-phpunit": "*",
-    "phpstan/phpstan-strict-rules": "*",
-    "phpunit/phpunit": "*",
-    "psalm/plugin-phpunit": "*",
+    "phpstan/extension-installer": "^1.1.0",
+    "phpstan/phpstan": "~0.12.71",
+    "phpstan/phpstan-deprecation-rules": "~0.12.6",
+    "phpstan/phpstan-phpunit": "~0.12.17",
+    "phpstan/phpstan-strict-rules": "~0.12.9",
+    "phpunit/phpunit": "^9",
+    "psalm/plugin-phpunit": "~0.15.1",
     "squizlabs/php_codesniffer": "*",
-    "vimeo/psalm": "*"
+    "vimeo/psalm": "^4.4.1"
   },
   "extra": {
     "composer-normalize": {
