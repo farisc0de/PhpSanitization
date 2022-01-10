@@ -65,8 +65,8 @@
     }
   },
   "scripts": {
-    "cs-check": "phpcs",
-    "cs-fix": "phpcbf",
+    "cs-check": "vendor/bin/phpcs",
+    "cs-fix": "vendor/bin/phpcbf",
     "test": "vendor/bin/phpunit"
   },
   "support": {
