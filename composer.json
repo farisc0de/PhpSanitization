@@ -45,8 +45,7 @@
     "phpstan/phpstan-strict-rules": "*",
     "phpunit/phpunit": "*",
     "psalm/plugin-phpunit": "*",
-    "squizlabs/php_codesniffer": "*",
-    "vimeo/psalm": "*"
+    "squizlabs/php_codesniffer": "*"
   },
   "extra": {
     "composer-normalize": {
