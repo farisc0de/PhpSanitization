@@ -6723,7 +6723,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.3 || ^8.1",
         "ext-filter": "*"
     },
     "platform-dev": [],
