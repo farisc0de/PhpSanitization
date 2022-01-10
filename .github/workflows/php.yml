@@ -34,6 +34,3 @@ jobs:
       
     - name: Run coding standard checker
       run: composer run-script cs-check
-      
-    - name: Run mutation tests
-      run: composer run-script mutation
