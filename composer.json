@@ -67,8 +67,7 @@
   "scripts": {
     "cs-check": "vendor/bin/phpcs",
     "cs-fix": "vendor/bin/phpcbf",
-    "test": "vendor/bin/phpunit",
-    "mutation": "vendor/bin/infection --configuration=infection.json"
+    "test": "vendor/bin/phpunit"
   },
   "support": {
     "issues": "https://github.com/farisd3v/PhpSanitization/issues",
