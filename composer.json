@@ -17,7 +17,7 @@
     "php-sanitize",
     "php-sanitization"
   ],
-  "homepage": "https://github.com/farisd3v/PhpSanitization",
+  "homepage": "https://github.com/farisc0de/PhpSanitization",
   "license": "MIT",
   "authors": [
     {
@@ -67,7 +67,8 @@
   "scripts": {
     "cs-check": "vendor/bin/phpcs",
     "cs-fix": "vendor/bin/phpcbf",
-    "test": "vendor/bin/phpunit"
+    "test": "vendor/bin/phpunit",
+    "mutation": "vendor/bin/infection --configuration=infection.json"
   },
   "support": {
     "issues": "https://github.com/farisd3v/PhpSanitization/issues",
