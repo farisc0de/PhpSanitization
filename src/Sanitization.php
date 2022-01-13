@@ -16,7 +16,7 @@ namespace PhpSanitization\PhpSanitization;
  * @version v1.0.10
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
- * @link https://github.com/farisd3v/phpsanitization
+ * @link https://github.com/farisc0de/phpsanitization
  */
 final class Sanitization
 {
