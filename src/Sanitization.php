@@ -388,7 +388,7 @@ final class Sanitization
 
     /**
      * Create a callback function when needed after or before an operation
-     * 
+     *
      * @param callback $function
      *  A callback function to execute
      * @param mixed $args
