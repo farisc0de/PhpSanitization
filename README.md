@@ -145,6 +145,14 @@ echo $sanitizer->isEmpty($variable) ? "true" : "false";
 echo $sanitizer->isAssociative($array) ? "true" : "fale";
 ```
 
+### callback
+
+```php
+echo $sanitizer->callback(function () {
+    return "text";
+});
+```
+
 ## Screenshot
 
 ![Screenshot](https://f.top4top.io/p_1862u2uul1.png)
