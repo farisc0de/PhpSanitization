@@ -297,4 +297,17 @@ class SanitizationTest extends TestCase
 
         $this->assertEquals($bool, $expected);
     }
+
+    public function testCallback()
+    {
+        $sanitizer = new Sanitization();
+
+        $bool = $sanitizer->callback(function ($bool) {
+            return $bool;
+        }, true);
+
+        $expected = true;
+
+        $this->assertEquals($bool, $expected);
+    }
 }

@@ -90,6 +90,10 @@ $sanitizer = new Sanitization();
     <h2>isAssociative Function:</h2>
 
     <p><b>Output:</b> <?php include_once './is_associative_exmaple.php'; ?></p>
+
+    <h2>Callback Function:</h2>
+
+    <p><b>Output:</b> <?php include_once './callback_example.php'; ?></p>
 </body>
 
 </html>
