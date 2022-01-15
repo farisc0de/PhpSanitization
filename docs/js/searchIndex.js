@@ -101,6 +101,11 @@ Search.appendIndex(
             "summary": "Check\u0020if\u0020the\u0020provided\u0020variable\u0020is\u0020empty",
             "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_isEmpty"
         },                {
+            "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003Acallback\u0028\u0029",
+            "name": "callback",
+            "summary": "Create\u0020a\u0020callback\u0020function\u0020when\u0020needed\u0020after\u0020or\u0020before\u0020an\u0020operation",
+            "url": "classes/PhpSanitization-PhpSanitization-Sanitization.html#method_callback"
+        },                {
             "fqsen": "\\PhpSanitization\\PhpSanitization\\Sanitization\u003A\u003A\u0024data",
             "name": "data",
             "summary": "The\u0020value\u0020of\u0020the\u0020malicious\u0020string\u0020you\u0020want\u0020to\u0020sanitize",
