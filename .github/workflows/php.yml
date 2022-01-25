@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  integrate:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -28,6 +28,13 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+  integrate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
 
     - name: Run test suite
       run: composer run-script test
