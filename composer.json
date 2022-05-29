@@ -46,7 +46,8 @@
     "phpunit/phpunit": "^9",
     "psalm/plugin-phpunit": "~0.15.1",
     "squizlabs/php_codesniffer": "*",
-    "vimeo/psalm": "^4.4.1"
+    "vimeo/psalm": "^4.4.1",
+    "phpmd/phpmd": "^2.12"
   },
   "extra": {
     "composer-normalize": {
@@ -67,7 +68,8 @@
   "scripts": {
     "cs-check": "vendor/bin/phpcs",
     "cs-fix": "vendor/bin/phpcbf",
-    "test": "vendor/bin/phpunit"
+    "test": "vendor/bin/phpunit",
+    "fix-mess": "vendor/bin/phpmd src/Sanitization.php ansi cleancode"
   },
   "support": {
     "issues": "https://github.com/farisd3v/PhpSanitization/issues",

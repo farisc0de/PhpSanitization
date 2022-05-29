@@ -1,10 +1,12 @@
 <?php
 
 include_once '../src/Sanitization.php';
+include_once '../src/Utils.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
+use PhpSanitization\PhpSanitization\Utils;
 
-$sanitizer = new Sanitization();
+$sanitizer = new Sanitization(new Utils);
 ?>
 
 <!DOCTYPE html>

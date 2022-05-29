@@ -21,21 +21,13 @@ namespace PhpSanitization\PhpSanitization;
 final class Sanitization
 {
     /**
-     * The value of the malicious string you want to sanitize
-     *
-     * @var mixed
-     */
-    private $data;
-
-    /**
      * PhpSanitization Class Constructor
      *
      * @param mixed $data
      *  The value of the malicious string you want to sanitize
      */
-    public function __construct($data = "")
+    public function __construct(private $utils, private $data = "")
     {
-        $this->data = $data;
     }
 
     /**
@@ -60,22 +52,22 @@ final class Sanitization
      *
      * @param string $data
      *  The string that will be trimmed.
-     * @param string $from_where
+     * @param string $fromWhere
      *  Define from where do you want to trim whitespaces (Left, Right, Both)
      * @return string
      *  The trimmed string.
      */
-    public function useTrim($data, $from_where = "both")
+    public function useTrim($data, $fromWhere = "both")
     {
-        if ($from_where == "left") {
+        if ($fromWhere == "left") {
             $data = ltrim($data);
         }
 
-        if ($from_where == "right") {
+        if ($fromWhere == "right") {
             $data = rtrim($data);
         }
 
-        if ($from_where == "both") {
+        if ($fromWhere == "both") {
             $data = trim($data);
         }
 
@@ -87,16 +79,16 @@ final class Sanitization
      *
      * @param string $data
      *  The input string.
-     * @param int $quote_style
+     * @param int $quoteStyle
      *  quote_style parameter lets you define what will be done with 'single' and "double" quotes.
      * @param string $charset
      *  used in conversion. Presently, the UTF-8 character set is used as the default
      * @return string
      *  The encoded string
      */
-    public function useHtmlEntities($data, $quote_style = ENT_QUOTES, $charset = "UTF-8")
+    public function useHtmlEntities($data, $quoteStyle = ENT_QUOTES, $charset = "UTF-8")
     {
-        return htmlentities($data, $quote_style, $charset);
+        return htmlentities($data, $quoteStyle, $charset);
     }
 
     /**
@@ -109,7 +101,7 @@ final class Sanitization
      * @return mixed
      *  the filtered data, or FALSE if the filter fails.
      */
-    public function useFilterVar($data, $filter = FILTER_SANITIZE_STRING)
+    public function useFilterVar($data, $filter = FILTER_DEFAULT)
     {
         return filter_var($data, $filter);
     }
@@ -226,37 +218,39 @@ final class Sanitization
         }
 
         if (is_string($data)) {
-            if ($this->isEmpty($data)) {
+            if ($this->utils->isEmpty($data)) {
                 return false;
             }
 
             return $this->sanitize($data);
         }
 
-
         if (is_array($data)) {
-            $santizied = [];
-
-            if ($this->isEmpty($data)) {
-                return false;
-            }
-
-            if ($this->isAssociative($data) == false) {
-                foreach ($data as $value) {
-                    $santizied[] = $this->sanitize($value);
-                }
-            }
-
-            if ($this->isAssociative($data) == true) {
-                foreach ($data as $key => $value) {
-                    $santizied[$this->sanitize($key)] = $this->sanitize($value);
-                }
-            }
-
-            return $santizied;
+            return $this->sanitizeArray($data);
         }
 
         return false;
+    }
+
+    private function sanitizeArray($data)
+    {
+        $santizied = [];
+
+        if ($this->utils->isEmpty($data)) {
+            return false;
+        }
+
+        if ($this->utils->isAssociative($data) == false) {
+            foreach ($data as $value) {
+                $santizied[] = $this->sanitize($value);
+            }
+        }
+
+        if ($this->utils->isAssociative($data) == true) {
+            foreach ($data as $key => $value) {
+                $santizied[$this->sanitize($key)] = $this->sanitize($value);
+            }
+        }
     }
 
     /**
@@ -276,7 +270,7 @@ final class Sanitization
             $data = $this->data;
         }
 
-        if ($this->isEmpty($data)) {
+        if ($this->utils->isEmpty($data)) {
             return false;
         }
 
@@ -297,7 +291,7 @@ final class Sanitization
     {
         $email = $this->useFilterVar($email, FILTER_SANITIZE_EMAIL);
         $domain = strtolower(substr($email, strpos($email, '@') + 1));
-        if ($this->isEmpty($providers)) {
+        if ($this->utils->isEmpty($providers)) {
             $providers = [
                 'gmail.com',
                 'hotmail.com',
@@ -351,42 +345,6 @@ final class Sanitization
     }
 
     /**
-     * Check if the provided array is an associative or a sequential array
-     *
-     * @param array $array
-     *  The array you want to check it's type
-     * @return boolean
-     *  Return true if provided array is an associative or false otherwise
-     */
-    public function isAssociative($array)
-    {
-        return array_keys($array) !== range(0, count($array) - 1);
-    }
-
-    /**
-     * Check if the provided variable is empty
-     *
-     * @param mixed $data
-     *  The variable you want to check if it's empty or not
-     * @return boolean
-     *  Return true if the variable does not contain data or false otherwise
-     */
-    public function isEmpty($data)
-    {
-        $bool = false;
-
-        if (is_array($data)) {
-            $bool = array() === $data;
-        }
-
-        if (is_string($data)) {
-            $bool = ($data == "");
-        }
-
-        return $bool;
-    }
-
-    /**
      * Create a callback function when needed after or before an operation
      *
      * @param callback $function
@@ -399,11 +357,7 @@ final class Sanitization
     public function callback($function, $args = null)
     {
         if (is_callable($function)) {
-            if (is_array($args)) {
-                return call_user_func_array($function, $args);
-            } else {
-                return call_user_func($function, $args);
-            }
+            return call_user_func_array($function, $args);
         }
     }
 }
