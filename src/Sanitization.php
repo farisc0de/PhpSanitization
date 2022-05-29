@@ -13,7 +13,7 @@ namespace PhpSanitization\PhpSanitization;
  * The class can also sanitize arrays of data by processing the array values one by one.
  *
  * @package PhpSanitization
- * @version v1.0.11
+ * @version v1.0.13
  * @author fariscode <farisksa79@gmail.com>
  * @license MIT
  * @link https://github.com/farisc0de/phpsanitization
@@ -57,7 +57,7 @@ final class Sanitization
      * @return string
      *  The trimmed string.
      */
-    public function useTrim($data, $fromWhere = "both")
+    private function useTrim($data, $fromWhere = "both")
     {
         if ($fromWhere == "left") {
             $data = ltrim($data);
@@ -86,7 +86,7 @@ final class Sanitization
      * @return string
      *  The encoded string
      */
-    public function useHtmlEntities($data, $quoteStyle = ENT_QUOTES, $charset = "UTF-8")
+    private function useHtmlEntities($data, $quoteStyle = ENT_QUOTES, $charset = "UTF-8")
     {
         return htmlentities($data, $quoteStyle, $charset);
     }
@@ -101,7 +101,7 @@ final class Sanitization
      * @return mixed
      *  the filtered data, or FALSE if the filter fails.
      */
-    public function useFilterVar($data, $filter = FILTER_DEFAULT)
+    private function useFilterVar($data, $filter = FILTER_DEFAULT)
     {
         return filter_var($data, $filter);
     }
@@ -114,7 +114,7 @@ final class Sanitization
      * @return string
      *  the stripped string.
      */
-    public function useStripTags($data)
+    private function useStripTags($data)
     {
         return strip_tags($data);
     }
@@ -178,7 +178,7 @@ final class Sanitization
      * @return mixed
      *  This function returns a string with the replaced values.
      */
-    public function useStrReplace($search, $replace, $subject)
+    private function useStrReplace($search, $replace, $subject)
     {
         return str_replace($search, $replace, $subject);
     }
@@ -207,7 +207,7 @@ final class Sanitization
      *  $sanitizer->useSanitize($_POST["username"]);
      *
      * @param mixed $data
-     *  The value of the malicious string you want to sanitize
+     *  The value of the malicious data you want to sanitize
      * @return mixed
      *  Return a sanitized string, array, or associative array
      */
@@ -232,6 +232,14 @@ final class Sanitization
         return false;
     }
 
+    /**
+     * Sanatize an associative array, a sequential array
+     *
+     * @param mixed $data
+     *  The value of the malicious array you want to sanitize
+     * @return mixed
+     *  Return a sanitized array, or associative array
+     */
     private function sanitizeArray($data)
     {
         $santizied = [];
