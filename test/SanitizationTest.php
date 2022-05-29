@@ -88,54 +88,6 @@ class SanitizationTest extends TestCase
         );
     }
 
-    public function testCheckIfUseTrimWorks()
-    {
-        $sanitizer = new Sanitization(new Utils);
-        $escaped = $sanitizer->useTrim(" This is a text ");
-        $expected = "This is a text";
-
-        $this->assertEquals(
-            $expected,
-            $escaped
-        );
-    }
-
-    public function testCheckIfUseHtmlEntitiesWorks()
-    {
-        $sanitizer = new Sanitization(new Utils);
-        $escaped = $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
-        $expected = "&lt;script&gt;alert(&#039;This is js code&#039;);&lt;/script&gt;";
-
-        $this->assertEquals(
-            $expected,
-            $escaped
-        );
-    }
-
-    public function testCheckIfUseFilterVarWorks()
-    {
-        $sanitizer = new Sanitization(new Utils);
-        $escaped = $sanitizer->useFilterVar("This is a string");
-        $expected = "This is a string";
-
-        $this->assertEquals(
-            $expected,
-            $escaped
-        );
-    }
-
-    public function testCheckIfUseStripTagsWorks()
-    {
-        $sanitizer = new Sanitization(new Utils);
-        $escaped = $sanitizer->useStripTags("<script>alert('This is js code');</script>");
-        $expected = "alert('This is js code');";
-
-        $this->assertEquals(
-            $expected,
-            $escaped
-        );
-    }
-
     public function testCheckIfUseStripSlashesWorks()
     {
         $sanitizer = new Sanitization(new Utils);
@@ -218,51 +170,8 @@ class SanitizationTest extends TestCase
         $this->assertEquals($expected[0], $sanitized[0]);
     }
 
-    public function testCheckIfUseStrReplaceWorks()
-    {
-        $sanitizer = new Sanitization(new Utils);
 
-        $sanitized = $sanitizer->useStrReplace(
-            "Lorem",
-            "",
-            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
-        );
 
-        $expected = " ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?";
-
-        $this->assertEquals($expected, $sanitized);
-    }
-
-    public function testCheckIfUseStrReplaceFindNull()
-    {
-        $sanitizer = new Sanitization(new Utils);
-
-        $sanitized = $sanitizer->useStrReplace(
-            "Lorem",
-            "",
-            ""
-        );
-
-        $expected = null;
-
-        $this->assertEquals($expected, $sanitized);
-    }
-
-    public function testCheckIfUseStrReplaceWorksOnArray()
-    {
-        $sanitizer = new Sanitization(new Utils);
-
-        $sanitized = $sanitizer->useStrReplace([
-            "Lorem"
-        ], [
-            ""
-        ], [
-            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
-        ]);
-        $expected[0] = " ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?";
-
-        $this->assertEquals($expected[0], $sanitized[0]);
-    }
 
     public function testCheckIfIsValidWork()
     {
