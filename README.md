@@ -27,7 +27,7 @@ The class can also sanitize arrays of data by processing the array values one by
 
 ## Requirements
 
-1. PHP 7.0+
+1. PHP 8.0+
 2. [Composer](https://getcomposer.org/)
 
 ## How to install
