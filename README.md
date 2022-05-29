@@ -1,4 +1,3 @@
-
 <p align="center">
     <img align="center" src="https://d.top4top.io/p_1862a8k1e1.png" height="350px" />
 </p>
@@ -45,8 +44,9 @@ $ composer require phpsanitization/phpsanitization
 include_once 'vendor/autoload.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
+use PhpSanitization\PhpSanitization\Utils;
 
-$sanitizer = new Sanitization();
+$sanitizer = new Sanitization(new Utils);
 ```
 
 ### useSanitize
@@ -178,7 +178,6 @@ Please have a look at [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md).
 This package is licensed using the MIT License.
 
 Please have a look at [`LICENSE.md`](LICENSE.md).
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffariscode511%2FPhpSanitization?ref=badge_large)
 
