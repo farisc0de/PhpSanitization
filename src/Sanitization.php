@@ -251,6 +251,8 @@ final class Sanitization
                 $santizied[$this->sanitize($key)] = $this->sanitize($value);
             }
         }
+
+        return $santizied;
     }
 
     /**
@@ -357,7 +359,7 @@ final class Sanitization
     public function callback($function, $args = null)
     {
         if (is_callable($function)) {
-            return call_user_func_array($function, $args);
+            return call_user_func($function, $args);
         }
     }
 }

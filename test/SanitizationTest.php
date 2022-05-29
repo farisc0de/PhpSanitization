@@ -3,13 +3,14 @@
 namespace PhpSanitization\PhpSanitization\Test;
 
 use PhpSanitization\PhpSanitization\Sanitization;
+use PhpSanitization\PhpSanitization\Utils;
 use PHPUnit\Framework\TestCase;
 
 class SanitizationTest extends TestCase
 {
     public function testCheckIfTheLibrarySanitizeString()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize("<script>alert('xss');</script>");
         $expected = "&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;";
 
@@ -18,7 +19,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibrarySanitizeArray()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize(["<script>alert('xss');</script>"]);
         $expected[0] = "&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;";
 
@@ -27,7 +28,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibrarySanitizeAssociativeArrayValues()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize(["xss" => "<script>alert('xss');</script>"]);
         $expected["xss"] = "&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;";
 
@@ -36,7 +37,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibrarySanitizeAssociativeArrayKeys()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize(["sql'" => "xss"]);
         $expected["sql&#039;"] = "xss";
 
@@ -48,7 +49,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibraryIdentiftyEmptyString()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize("");
         $expected = false;
 
@@ -57,7 +58,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibraryIdentiftyEmptyArray()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useSanitize([]);
         $expected = false;
 
@@ -66,7 +67,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibraryIdentiftyEmptyQuery()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $sanitized = $sanitizer->useEscape("");
         $expected = false;
 
@@ -75,7 +76,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfTheLibraryEscapeSqlQueries()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useEscape(
             "SELECT * FROM 'users' WHERE username = 'admin';"
         );
@@ -89,7 +90,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseTrimWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useTrim(" This is a text ");
         $expected = "This is a text";
 
@@ -101,7 +102,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseHtmlEntitiesWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
         $expected = "&lt;script&gt;alert(&#039;This is js code&#039;);&lt;/script&gt;";
 
@@ -113,7 +114,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseFilterVarWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useFilterVar("This is a string");
         $expected = "This is a string";
 
@@ -125,7 +126,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseStripTagsWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useStripTags("<script>alert('This is js code');</script>");
         $expected = "alert('This is js code');";
 
@@ -137,7 +138,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseStripSlashesWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useStripSlashes("C:\Users\Faris\Music");
         $expected = "C:UsersFarisMusic";
 
@@ -149,7 +150,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseHtmlSpecialCharsWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
         $escaped = $sanitizer->useHtmlSpecialChars("<script>alert('This is js code');</script>");
         $expected = "&lt;script&gt;alert(&#039;This is js code&#039;);&lt;/script&gt;";
 
@@ -161,7 +162,7 @@ class SanitizationTest extends TestCase
 
     public function testSetterAndGetter()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $this->testCheckIfTheSetterCanSetData($sanitizer);
 
@@ -184,7 +185,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUsePregReplaceWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->usePregReplace(
             "/([A-Z])\w+/",
@@ -197,7 +198,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUsePregReplaceFindNull()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->usePregReplace("/([A-Z])\w+/", "");
         $expected = null;
@@ -207,7 +208,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUsePregReplaceWorksOnArray()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->usePregReplace(["/([A-Z])\w+/"], [
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, sint?"
@@ -219,7 +220,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseStrReplaceWorks()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->useStrReplace(
             "Lorem",
@@ -234,7 +235,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseStrReplaceFindNull()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->useStrReplace(
             "Lorem",
@@ -249,7 +250,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfUseStrReplaceWorksOnArray()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $sanitized = $sanitizer->useStrReplace([
             "Lorem"
@@ -265,7 +266,7 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfIsValidWork()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $validate = $sanitizer->isValid("demo@gmail.com", FILTER_VALIDATE_EMAIL);
 
@@ -276,9 +277,9 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfIsAssociativeWorks()
     {
-        $sanitizer = new Sanitization();
+        $utils = new Utils();
 
-        $bool = $sanitizer->isAssociative([
+        $bool = $utils->isAssociative([
             "key" => "value"
         ]);
 
@@ -289,9 +290,9 @@ class SanitizationTest extends TestCase
 
     public function testCheckIfIsEmptyWorks()
     {
-        $sanitizer = new Sanitization();
+        $utils = new Utils();
 
-        $bool = $sanitizer->isEmpty("");
+        $bool = $utils->isEmpty("");
 
         $expected = true;
 
@@ -300,7 +301,7 @@ class SanitizationTest extends TestCase
 
     public function testCallbackWithArgs()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $bool = $sanitizer->callback(function ($bool) {
             return $bool;
@@ -313,7 +314,7 @@ class SanitizationTest extends TestCase
 
     public function testCallbackWitouthArgs()
     {
-        $sanitizer = new Sanitization();
+        $sanitizer = new Sanitization(new Utils);
 
         $bool = $sanitizer->callback(function () {
             return true;
