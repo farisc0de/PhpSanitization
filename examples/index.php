@@ -1,12 +1,11 @@
 <?php
+declare(strict_types=1);
 
-include_once '../src/Sanitization.php';
-include_once '../src/Utils.php';
+require_once __DIR__ . '/../src/Utils.php';
+require_once __DIR__ . '/../src/Sanitization.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
 use PhpSanitization\PhpSanitization\Utils;
-
-$sanitizer = new Sanitization(new Utils);
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +95,10 @@ $sanitizer = new Sanitization(new Utils);
     <h2>Callback Function:</h2>
 
     <p><b>Output:</b> <?php include_once './callback_example.php'; ?></p>
+
+    <h2>Recursive Array Sanitization (New in v2.0):</h2>
+
+    <p><b>Output:</b> <?php include_once './recursive_array_sanitize_example.php'; ?></p>
 </body>
 
 </html>
