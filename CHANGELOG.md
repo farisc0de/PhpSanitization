@@ -4,6 +4,37 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v2.0.0 (2025-05-03)
+
+### Added
+- Strict typing throughout the library with `declare(strict_types=1)`
+- Comprehensive parameter and return type declarations for all methods
+- Support for PHP 8 features including union types and the match expression
+- Enhanced email validation with DNS checking and customizable provider lists
+- Recursive sanitization for deeply nested arrays
+- Better type preservation for non-string values in arrays
+- Support for method chaining on setter methods
+- Proper exception handling for invalid callbacks
+- Additional unit tests for all new functionality
+
+### Changed
+- Modernized library description and keywords in composer.json
+- Improved PHPDoc comments with modern standards and better descriptions
+- Updated utility methods with more robust edge case handling
+- Refactored code to use modern PHP patterns and reduce duplication
+- Enhanced SQL escaping using `strtr()` instead of `str_replace()`
+- Better isEmpty() checks that handle whitespace strings properly
+
+### Fixed
+- Arrays with mixed data types are now properly sanitized
+- Empty array handling in isAssociative() method
+- Various edge cases in input validation
+
+### Security
+- Improved HTML entity encoding with ENT_HTML5 flag
+- Enhanced input validation across all methods
+- Better protection against XSS and SQL injection attacks
+
 ## v1.0.0
 
 Initial Release
@@ -89,3 +120,5 @@ Just some bug fixes and cleaning
 ## v1.0.13
 
 Just some bug fixes, cleaning, and refactoring
+
+

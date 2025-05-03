@@ -1,13 +1,13 @@
 {
   "name": "phpsanitization/phpsanitization",
   "type": "library",
-  "description": "Simple PHP Sanitization Class",
+  "description": "Modern PHP Sanitization Library",
   "keywords": [
     "sanitization",
     "filter",
     "filtering",
     "php",
-    "php7",
+    "php8",
     "php-library",
     "sanitizer",
     "xss-filter",
@@ -15,7 +15,9 @@
     "php-sanitizer",
     "php-sanitizer-array",
     "php-sanitize",
-    "php-sanitization"
+    "php-sanitization",
+    "input-validation",
+    "security"
   ],
   "homepage": "https://github.com/farisc0de/PhpSanitization",
   "license": "MIT",

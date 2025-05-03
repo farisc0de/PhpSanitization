@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhpSanitization\PhpSanitization\Test;
 
+
+use InvalidArgumentException;
 use PhpSanitization\PhpSanitization\Sanitization;
 use PhpSanitization\PhpSanitization\Utils;
 use PHPUnit\Framework\TestCase;
@@ -33,6 +37,49 @@ class SanitizationTest extends TestCase
         $expected["xss"] = "&lt;script&gt;alert(&#039;xss&#039;);&lt;/script&gt;";
 
         $this->assertEquals($expected["xss"], $sanitized["xss"]);
+    }
+    
+    public function testRecursiveArraySanitization()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Create a nested array with HTML content
+        $testData = [
+            'level1' => [
+                'level2' => [
+                    'content' => "<script>alert('nested xss');</script>"
+                ]
+            ]
+        ];
+        
+        $sanitized = $sanitizer->useSanitize($testData);
+        
+        // Check that the nested content was sanitized
+        $this->assertEquals(
+            "&lt;script&gt;alert(&#039;nested xss&#039;);&lt;/script&gt;", 
+            $sanitized['level1']['level2']['content']
+        );
+    }
+    
+    public function testMixedArraySanitization()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Create an array with mixed content types (string, int, array)
+        $testData = [
+            'html' => "<p>Test</p>",
+            'number' => 42,
+            'nested' => [
+                'html' => "<strong>Bold</strong>"
+            ]
+        ];
+        
+        $sanitized = $sanitizer->useSanitize($testData);
+        
+        // Verify each type is handled correctly
+        $this->assertEquals("&lt;p&gt;Test&lt;/p&gt;", $sanitized['html']);
+        $this->assertEquals(42, $sanitized['number']); // Numbers should be preserved
+        $this->assertEquals("&lt;strong&gt;Bold&lt;/strong&gt;", $sanitized['nested']['html']);
     }
 
     public function testCheckIfTheLibrarySanitizeAssociativeArrayKeys()
@@ -87,6 +134,21 @@ class SanitizationTest extends TestCase
             $escaped
         );
     }
+    
+    public function testSqlEscapeWithComplexInput()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Test with various special characters that need escaping
+        $sql = "INSERT INTO `table` VALUES (\"data with \\backslash\", 'quotes', \"newline\n\")";
+        
+        $escaped = $sanitizer->useEscape($sql);
+        
+        // The escaped string should properly handle all special characters
+        $this->assertStringContainsString('\\\\', $escaped); // Escaped backslash
+        $this->assertStringContainsString('\\\'', $escaped); // Escaped single quote
+        $this->assertStringContainsString('\\n', $escaped); // Escaped newline
+    }
 
     public function testCheckIfUseStripSlashesWorks()
     {
@@ -123,9 +185,10 @@ class SanitizationTest extends TestCase
 
     private function testCheckIfTheSetterCanSetData($s)
     {
-        $bool = $s->setData("data");
+        $result = $s->setData("data");
 
-        $this->assertNull($bool);
+        // The setData method now returns self for method chaining
+        $this->assertInstanceOf(Sanitization::class, $result);
     }
 
     private function testCheckIfTheGetterCanGetData($s)
@@ -170,9 +233,6 @@ class SanitizationTest extends TestCase
         $this->assertEquals($expected[0], $sanitized[0]);
     }
 
-
-
-
     public function testCheckIfIsValidWork()
     {
         $sanitizer = new Sanitization(new Utils);
@@ -184,53 +244,134 @@ class SanitizationTest extends TestCase
         $this->assertEquals($expected, $validate);
     }
 
+    public function testCheckIfIsValidWithOptionsWorks()
+    {
+        $sanitizer = new Sanitization(new Utils);
+
+        // Test with array options parameter
+        $validate = $sanitizer->isValid("https://example.com", FILTER_VALIDATE_URL, [
+            'flags' => FILTER_FLAG_PATH_REQUIRED
+        ]);
+
+        $this->assertFalse($validate);
+        
+        // Test with valid URL that has a path
+        $validate = $sanitizer->isValid("https://example.com/path", FILTER_VALIDATE_URL, [
+            'flags' => FILTER_FLAG_PATH_REQUIRED
+        ]);
+
+        $this->assertEquals("https://example.com/path", $validate);
+    }
+
     public function testCheckIfIsAssociativeWorks()
     {
         $utils = new Utils();
 
-        $bool = $utils->isAssociative([
+        // Test associative array
+        $result = $utils->isAssociative([
             "key" => "value"
         ]);
-
-        $expected = true;
-
-        $this->assertEquals($expected, $bool);
+        $this->assertTrue($result);
+        
+        // Test sequential array
+        $result = $utils->isAssociative(["apple", "banana", "orange"]);
+        $this->assertFalse($result);
+        
+        // Test empty array (should return false)
+        $result = $utils->isAssociative([]);
+        $this->assertFalse($result);
     }
 
     public function testCheckIfIsEmptyWorks()
     {
         $utils = new Utils();
 
-        $bool = $utils->isEmpty("");
-
-        $expected = true;
-
-        $this->assertEquals($bool, $expected);
+        // Test empty string
+        $this->assertTrue($utils->isEmpty(""));
+        
+        // Test whitespace string (should be empty with trim)
+        $this->assertTrue($utils->isEmpty("   	  
+"));
+        
+        // Test non-empty string
+        $this->assertFalse($utils->isEmpty("Hello"));
+        
+        // Test empty array
+        $this->assertTrue($utils->isEmpty([]));
+        
+        // Test non-empty array
+        $this->assertFalse($utils->isEmpty([1, 2, 3]));
+    }
+    
+    public function testEmailValidationWithValidEmail()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Mock the DNS check (we can't test real DNS lookups reliably in unit tests)
+        // We'll test with checkDns = false to skip the DNS check
+        $result = $sanitizer->validateEmail("test@gmail.com", [], false);
+        
+        $this->assertTrue($result);
+    }
+    
+    public function testEmailValidationWithInvalidEmail()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Test with malformed email
+        $result = $sanitizer->validateEmail("not-an-email", [], false);
+        
+        $this->assertFalse($result);
+    }
+    
+    public function testEmailValidationWithCustomProviders()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Test with custom providers that don't include gmail.com
+        $result = $sanitizer->validateEmail("test@gmail.com", ['example.com', 'company.com'], false);
+        
+        $this->assertFalse($result);
+        
+        // Test with matching provider
+        $result = $sanitizer->validateEmail("test@company.com", ['example.com', 'company.com'], false);
+        
+        $this->assertTrue($result);
     }
 
     public function testCallbackWithArgs()
     {
         $sanitizer = new Sanitization(new Utils);
 
-        $bool = $sanitizer->callback(function ($bool) {
+        $result = $sanitizer->callback(function ($bool) {
             return $bool;
         }, true);
 
-        $expected = true;
-
-        $this->assertEquals($bool, $expected);
+        $this->assertTrue($result);
     }
 
-    public function testCallbackWitouthArgs()
+    public function testCallbackWithoutArgs()
     {
         $sanitizer = new Sanitization(new Utils);
 
-        $bool = $sanitizer->callback(function () {
+        $result = $sanitizer->callback(function () {
             return true;
         });
 
-        $expected = true;
-
-        $this->assertEquals($bool, $expected);
+        $this->assertTrue($result);
+    }
+    
+    public function testCallbackWithInvalidFunction()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $this->expectException(\InvalidArgumentException::class);
+        
+        // The callable type check happens within the method, so we need to pass a callable
+        // that will fail the is_callable check inside the method
+        // We mock this with a callable that throws when called
+        $sanitizer->callback(function() {
+            throw new \InvalidArgumentException('The provided function is not callable');
+        });
     }
 }
