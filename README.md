@@ -4,166 +4,195 @@
 
 # PhpSanitization
 
-![](https://img.shields.io/github/license/farisc0de/PhpSanitization) ![](https://img.shields.io/github/v/tag/farisc0de/PhpSanitization) ![](https://img.shields.io/github/repo-size/farisc0de/PhpSanitization) ![](https://img.shields.io/github/languages/top/farisc0de/PhpSanitization) ![](https://img.shields.io/github/commits-since/farisc0de/PhpSanitization/v1.0.11)
+![](https://img.shields.io/github/license/farisc0de/PhpSanitization) ![](https://img.shields.io/github/v/tag/farisc0de/PhpSanitization) ![](https://img.shields.io/github/repo-size/farisc0de/PhpSanitization) ![](https://img.shields.io/github/languages/top/farisc0de/PhpSanitization)
 
 ## About
 
-Simple PHP Sanitization Class
+A modern, type-safe PHP sanitization library designed for security and efficiency.
 
-This is a simple class that can verify and clean values to assure they are valid.
+PhpSanitization provides robust validation and sanitization capabilities to ensure your data is clean and safe. The library implements strict typing and leverages PHP 8's features for enhanced type safety and performance.
 
-It can take a given string and remove or encode certain types of text values, so it can be displayed in Web pages lowering the risk of being used to perform security attacks.
-
-The class can also sanitize arrays of data by processing the array values one by one.
+It can process strings, arrays (including deeply nested structures), and protect against various security threats like XSS and SQL injection.
 
 ## Features
 
-1. Out-Of-The-Box
-2. Support String, Arrays, and Associative Arrays
-3. Escape PDO and SQL queries
-4. Sanitize and validate email
-5. Built-in methods for custom sanitization
-6. Easy to Use
+1. **Strict Typing**: Full type declarations for all methods and parameters
+2. **Enhanced Security**: Improved protections against XSS and SQL injection attacks
+3. **Recursive Sanitization**: Deep cleaning of nested arrays and complex data structures
+4. **Method Chaining**: Fluent interface for composing multiple operations
+5. **Enhanced Email Validation**: DNS checking and custom provider validation
+6. **Improved SQL Escaping**: Better protection using `strtr()` for more secure queries
+7. **Comprehensive Documentation**: Complete examples for all features
+8. **PHP 8 Features**: Utilizes union types and match expressions
 
 ## Requirements
 
 1. PHP 8.0+
 2. [Composer](https://getcomposer.org/)
 
-## How to install
+## Installation & Usage
+
+### Installation
 
 ```sh
 $ composer require phpsanitization/phpsanitization
 ```
 
-## Usage
-
-### Class Inclusion
+### Basic Setup
 
 ```php
-include_once 'vendor/autoload.php';
+<?php
+
+declare(strict_types=1);
+
+require_once 'vendor/autoload.php';
 
 use PhpSanitization\PhpSanitization\Sanitization;
 use PhpSanitization\PhpSanitization\Utils;
 
-$sanitizer = new Sanitization(new Utils);
+// Initialize with proper dependency injection
+$sanitizer = new Sanitization(new Utils());
 ```
 
-### useSanitize
+## Core Features
+
+### String Sanitization
 
 ```php
-echo $sanitizer->useSanitize("<script>alert('xss');</script>");
+// Sanitize a string with potential XSS
+$result = $sanitizer->useSanitize("<script>alert('xss');</script>");
+echo $result; // Outputs safely encoded HTML entities
 ```
 
-### useEscape
+### Array Sanitization
 
 ```php
-echo $sanitizer->useEscape("SELECT * FROM `users` WHERE `username` = 'admin';");
+// Sanitize a simple array
+$array = [
+    "<script>alert('xss');</script>",
+    "<a href='javascript:alert(\"click\")'>Click me</a>"
+];
+$result = $sanitizer->useSanitize($array);
+
+// Sanitize an associative array
+$assocArray = [
+    "name" => "<script>alert('name');</script>",
+    "url" => "<a href='javascript:alert(\"url\")'>URL</a>"
+];
+$result = $sanitizer->useSanitize($assocArray);
 ```
 
-### useTrim
+### Recursive Array Sanitization (New in v2.0)
 
 ```php
-echo $sanitizer->useTrim(" This is a text ");
+// Sanitize deeply nested structures
+$nestedData = [
+    'user' => [
+        'name' => 'John <script>alert("XSS")</script> Doe',
+        'settings' => [
+            'theme' => 'dark<iframe src="malicious.html">'
+        ]
+    ]
+];
+$sanitizedData = $sanitizer->useSanitize($nestedData); // All levels sanitized!
 ```
 
-### useHtmlEntities
+### SQL Query Escaping
 
 ```php
-echo $sanitizer->useHtmlEntities("<script>alert('This is js code');</script>");
+// Escape a SQL query to prevent injection
+$query = "SELECT * FROM `users` WHERE `username` = 'admin' OR 1=1--'";
+$safeQuery = $sanitizer->useEscape($query);
 ```
 
-### useFilterVar
+### Enhanced Email Validation (Improved in v2.0)
 
 ```php
-echo $sanitizer->useFilterVar("This is a string");
+// Basic email validation with DNS checking
+$isValid = $sanitizer->validateEmail("user@example.com");
+
+// Email validation with custom provider list
+$customProviders = ['company.com', 'organization.org'];
+$isValid = $sanitizer->validateEmail("user@company.com", $customProviders);
+
+// Email validation without DNS checking (for testing)
+$isValid = $sanitizer->validateEmail("test@example.com", [], false);
 ```
 
-### useStripTags
+### Method Chaining (New in v2.0)
 
 ```php
-echo $sanitizer->useStripTags("<script>alert('This is js code');</script>");
+// Chain multiple operations together
+$result = $sanitizer
+    ->setData("<script>alert('XSS');</script>")
+    ->useSanitize();
+    
+// Process with callback
+$sanitizer
+    ->setData("<p>Some content with <script>alert('danger');</script></p>")
+    ->useSanitize();
+    
+$processed = $sanitizer->callback(function($data) {
+    return "Processed: " . $data;
+}, $sanitizer->getData());
 ```
 
-### useStripSlashes
+### Utility Methods
 
 ```php
-echo $sanitizer->useStripSlashes("C:\Users\Faris\Music");
+// Check if a variable is empty
+$isEmpty = $sanitizer->utils->isEmpty($variable);
+
+// Check if an array is associative
+$isAssoc = $sanitizer->utils->isAssociative($array);
+
+// Validate using filter_var
+$isValidIP = $sanitizer->isValid("127.0.0.1", FILTER_VALIDATE_IP);
 ```
 
-### useHtmlSpecialChars
+### Custom Processing with Callbacks
 
 ```php
-echo $sanitizer->useHtmlSpecialChars("<script>alert('This is js code');</script>");
+// Use callbacks for custom processing
+$result = $sanitizer->callback(function($data) {
+    // Custom processing logic here
+    return strtoupper($data) . " (processed)";
+}, "input data");
 ```
 
-### setData
+## Running the Examples
 
-```php
-$sanitizer->setData("This is data");
+The library includes a comprehensive set of examples demonstrating all features:
+
+```sh
+# Navigate to the examples directory
+cd examples
+
+# Run the examples using PHP's built-in server
+php -S localhost:8000
 ```
 
-### getData
+Then visit `http://localhost:8000` in your browser to see all examples in action.
 
-```php
-echo $sanitizer->getData();
-```
+## Migration from v1.x to v2.0
 
-### useStrReplace
+Version 2.0 introduces several breaking changes to improve security and type safety:
 
-```php
-echo $sanitizer->useStrReplace("text", "", "this is a text");
-```
+1. **Strict typing** is now enforced with `declare(strict_types=1)`
+2. **Private methods**: Several helper methods are now private (use public methods instead)
+3. **Utils class separation**: Utility methods moved to a separate class
+4. **Type declarations**: All methods now have parameter and return type declarations
+5. **Method signatures**: Some method signatures have changed to support new features
 
-### usePregReplace
-
-```php
-echo $sanitizer->usePregReplace("/([A-Z])\w+/", "This is a Text");
-```
-
-### validateEmail
-
-```php
-echo $sanitizer->validateEmail("fake.email@gmail.com") ? "true" : "false";
-```
-
-### isValid
-
-```php
-echo $sanitizer->isValid("127.0.0.1", FILTER_VALIDATE_IP) ? "true" : "false";
-```
-
-### isEmpty
-
-```php
-echo $sanitizer->isEmpty($variable) ? "true" : "false";
-```
-
-### isAssociative
-
-```php
-echo $sanitizer->isAssociative($array) ? "true" : "fale";
-```
-
-### callback
-
-```php
-echo $sanitizer->callback(function () {
-    return "text";
-});
-```
-
-## Screenshot
-
-![Screenshot](https://f.top4top.io/p_1862u2uul1.png)
+If you're upgrading from 1.x, review the examples directory for guidance on updating your code.
 
 ## Documentation
 
-The documentation for PhpSanitization is available [here](https://www.farisotaibi.com/PhpSanitization/)
+Comprehensive documentation is available in the examples directory and in the source code. For full API documentation, visit [PhpSanitization Documentation](https://www.farisotaibi.com/PhpSanitization/).
 
 ## Changelog
 
-Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
+Please see [`CHANGELOG.md`](CHANGELOG.md) for a detailed list of changes in each version.
 
 ## Contributing
 
@@ -185,4 +214,4 @@ Please have a look at [`LICENSE.md`](LICENSE.md).
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)
 
-Copyright (c) FarisCode - 2021
+Copyright (c) Faris Alotaibi - 2025
