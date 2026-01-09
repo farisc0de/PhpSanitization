@@ -7,6 +7,7 @@ namespace PhpSanitization\PhpSanitization\Test;
 
 use InvalidArgumentException;
 use PhpSanitization\PhpSanitization\Sanitization;
+use PhpSanitization\PhpSanitization\TrimDirection;
 use PhpSanitization\PhpSanitization\Utils;
 use PHPUnit\Framework\TestCase;
 
@@ -373,5 +374,89 @@ class SanitizationTest extends TestCase
         $sanitizer->callback(function() {
             throw new \InvalidArgumentException('The provided function is not callable');
         });
+    }
+
+    public function testUseTrimWithDefaultDirection()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $result = $sanitizer->useTrim("  Hello World  ");
+        
+        $this->assertEquals("Hello World", $result);
+    }
+
+    public function testUseTrimWithLeftDirection()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $result = $sanitizer->useTrim("  Hello World  ", TrimDirection::Left);
+        
+        $this->assertEquals("Hello World  ", $result);
+    }
+
+    public function testUseTrimWithRightDirection()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $result = $sanitizer->useTrim("  Hello World  ", TrimDirection::Right);
+        
+        $this->assertEquals("  Hello World", $result);
+    }
+
+    public function testUseTrimWithBothDirection()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $result = $sanitizer->useTrim("  Hello World  ", TrimDirection::Both);
+        
+        $this->assertEquals("Hello World", $result);
+    }
+
+    public function testUseHtmlEntities()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        $result = $sanitizer->useHtmlEntities("<script>alert('test');</script>");
+        
+        $this->assertEquals("&lt;script&gt;alert(&#039;test&#039;);&lt;/script&gt;", $result);
+    }
+
+    public function testUseFilterVar()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Test email validation
+        $result = $sanitizer->useFilterVar("test@example.com", FILTER_VALIDATE_EMAIL);
+        $this->assertEquals("test@example.com", $result);
+        
+        // Test invalid email
+        $result = $sanitizer->useFilterVar("invalid-email", FILTER_VALIDATE_EMAIL);
+        $this->assertFalse($result);
+    }
+
+    public function testUseStripTags()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Strip all tags
+        $result = $sanitizer->useStripTags("<p>Hello <b>World</b></p>");
+        $this->assertEquals("Hello World", $result);
+        
+        // Allow specific tags
+        $result = $sanitizer->useStripTags("<p>Hello <b>World</b></p>", "<b>");
+        $this->assertEquals("Hello <b>World</b>", $result);
+    }
+
+    public function testUseStrReplace()
+    {
+        $sanitizer = new Sanitization(new Utils);
+        
+        // Simple replacement
+        $result = $sanitizer->useStrReplace("World", "PHP", "Hello World");
+        $this->assertEquals("Hello PHP", $result);
+        
+        // Array replacement
+        $result = $sanitizer->useStrReplace(["Hello", "World"], ["Hi", "PHP"], "Hello World");
+        $this->assertEquals("Hi PHP", $result);
     }
 }

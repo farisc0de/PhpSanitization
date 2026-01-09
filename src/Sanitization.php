@@ -56,15 +56,15 @@ final class Sanitization
      * Strip whitespace from the beginning and end of a string
      *
      * @param string $data The string to be trimmed
-     * @param string $fromWhere Where to trim: 'left', 'right', or 'both'
+     * @param TrimDirection $fromWhere Where to trim: left, right, or both
      * @return string The trimmed string
      */
-    private function useTrim(string $data, string $fromWhere = "both"): string
+    public function useTrim(string $data, TrimDirection $fromWhere = TrimDirection::Both): string
     {
-        return match (strtolower($fromWhere)) {
-            "left" => ltrim($data),
-            "right" => rtrim($data),
-            default => trim($data),
+        return match ($fromWhere) {
+            TrimDirection::Left => ltrim($data),
+            TrimDirection::Right => rtrim($data),
+            TrimDirection::Both => trim($data),
         };
     }
 
@@ -76,7 +76,7 @@ final class Sanitization
      * @param string $charset Character set for conversion (default: UTF-8)
      * @return string The encoded string
      */
-    private function useHtmlEntities(string $data, int $quoteStyle = ENT_QUOTES | ENT_HTML5, string $charset = "UTF-8"): string
+    public function useHtmlEntities(string $data, int $quoteStyle = ENT_QUOTES | ENT_HTML5, string $charset = "UTF-8"): string
     {
         return htmlentities($data, $quoteStyle, $charset);
     }
@@ -89,7 +89,7 @@ final class Sanitization
      * @param array<string,mixed>|int $options Filter options
      * @return mixed The filtered data, or FALSE if the filter fails
      */
-    private function useFilterVar(mixed $data, int $filter = FILTER_DEFAULT, array|int $options = 0): mixed
+    public function useFilterVar(mixed $data, int $filter = FILTER_DEFAULT, array|int $options = 0): mixed
     {
         return filter_var($data, $filter, $options);
     }
@@ -101,7 +101,7 @@ final class Sanitization
      * @param string|null $allowedTags Optional tags to allow
      * @return string The stripped string
      */
-    private function useStripTags(string $data, ?string $allowedTags = null): string
+    public function useStripTags(string $data, ?string $allowedTags = null): string
     {
         return strip_tags($data, $allowedTags);
     }
@@ -151,7 +151,7 @@ final class Sanitization
      * @param string|array<string> $subject The string/array being searched (haystack)
      * @return string|array<string> The string/array with replaced values
      */
-    private function useStrReplace(string|array $search, string|array $replace, string|array $subject): string|array
+    public function useStrReplace(string|array $search, string|array $replace, string|array $subject): string|array
     {
         return str_replace($search, $replace, $subject);
     }

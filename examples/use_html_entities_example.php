@@ -11,24 +11,28 @@ use PhpSanitization\PhpSanitization\Utils;
 // Initialize the sanitizer with the Utils dependency
 $sanitizer = new Sanitization(new Utils());
 
-// Since useHtmlEntities is now private, we can use useSanitize which calls it internally
-// or we can demonstrate our direct HTML entity encoding with the ENT_HTML5 flag
-
 // Create a string with potentially malicious HTML/JS content
 $maliciousContent = "<script>alert('This is js code');</script>";
 
-// Method 1: Using useSanitize (which uses useHtmlEntities internally)
-echo "<h3>Using useSanitize:</h3>";
-$result1 = $sanitizer->useSanitize($maliciousContent);
-echo "Result: $result1<br>";
+// Using useHtmlEntities directly
+echo "<h3>Using useHtmlEntities:</h3>";
+$result = $sanitizer->useHtmlEntities($maliciousContent);
+echo "Result: $result<br>";
 echo "<small>Notice how the tags are converted to HTML entities</small><br><br>";
 
-// Method 2: Display the raw vs encoded content
+// Display the raw vs encoded content
 echo "<h3>Raw vs Encoded comparison:</h3>";
 echo "<strong>Raw content (dangerous!):</strong><br>";
-echo "<pre>$maliciousContent</pre>";
+echo "<pre>" . htmlspecialchars($maliciousContent) . "</pre>";
 
-echo "<strong>Encoded with useSanitize (safe):</strong><br>";
-echo "<pre>$result1</pre>";
-echo "<small>This safely displays the script tags without executing them</small><br>";
+echo "<strong>Encoded with useHtmlEntities (safe):</strong><br>";
+echo "<pre>$result</pre>";
+echo "<small>This safely displays the script tags without executing them</small><br><br>";
+
+// Using different quote styles
+echo "<h3>Different quote styles:</h3>";
+$quoteContent = "He said \"Hello\" and 'Goodbye'";
+echo "<strong>Original:</strong> $quoteContent<br>";
+echo "<strong>ENT_QUOTES:</strong> " . $sanitizer->useHtmlEntities($quoteContent, ENT_QUOTES) . "<br>";
+echo "<strong>ENT_NOQUOTES:</strong> " . $sanitizer->useHtmlEntities($quoteContent, ENT_NOQUOTES) . "<br>";
 
