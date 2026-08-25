@@ -1,3 +1,5 @@
+
+
 <p align="center">
     <img align="center" src="https://d.top4top.io/p_1862a8k1e1.png" height="350px" />
 </p>
@@ -140,11 +142,13 @@ $processed = $sanitizer->callback(function($data) {
 ### Utility Methods
 
 ```php
+$utils = new Utils();
+
 // Check if a variable is empty
-$isEmpty = $sanitizer->utils->isEmpty($variable);
+$isEmpty = $utils->isEmpty($variable);
 
 // Check if an array is associative
-$isAssoc = $sanitizer->utils->isAssociative($array);
+$isAssoc = $utils->isAssociative($array);
 
 // Validate using filter_var
 $isValidIP = $sanitizer->isValid("127.0.0.1", FILTER_VALIDATE_IP);
